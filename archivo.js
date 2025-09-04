@@ -1,4 +1,4 @@
-export const productos = [
+const productos = [
   {
     id: 0,
     nombre: "Aparador Uspallata",

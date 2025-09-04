@@ -1,3 +1,11 @@
+:root {
+  --color-siena: #a0522d; /*Color principal de marca, títulos principales*/
+  --color-verdeSalvia: #87a96b; /*Acento secundario, sustentabilidad*/
+  --color-alabastro: #f5e6d3; /*Fondos principales, fotografía*/
+  --color-oro: #d4a437; /*Detalles premium, acentos*/
+  --color-rosa: #c47a6d; /*Acentos suaves, detalles femeninos*/
+}
+
 html,
 body {
   margin: 0;
@@ -28,7 +36,7 @@ header img {
 }
 
 .textoSiena {
-  color: #a0522d;
+  color: var(--color-siena);
 }
 
 nav a {
@@ -49,4 +57,56 @@ footer {
   padding: 20px;
   position: relative;
   bottom: 0;
+}
+
+/* PRODUCTOS */
+#form-search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+#form-search #search {
+  width: 40%;
+  border-radius: 1rem;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+.cargando {
+  color: var(--color-siena);
+}
+#productos-container {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+.articuloDeProducto {
+  margin: 0.5rem;
+}
+.articuloDeProducto a {
+  cursor: pointer;
+  background: #fff;
+  width: 10rem;
+  height: 23rem;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  border-radius: 1rem;
+  text-decoration: none;
+  h1 {
+    color: brown;
+  }
+  p {
+    color: var(--color-siena);
+  }
+}
+.articuloDeProducto img {
+  width: 7em;
+  margin: auto;
+}
+.infoDeArticulo {
+  padding: 0 1rem;
+  border-top: 2px solid var(--color-alabastro);
 }
