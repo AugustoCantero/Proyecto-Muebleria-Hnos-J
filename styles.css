@@ -60,6 +60,21 @@ footer {
 }
 
 /* PRODUCTOS */
+#presentacion-productos {
+  width: 75%;
+  margin: 0 auto;
+  font-family: sans-serif;
+  h1 {
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--color-siena);
+  }
+  p {
+    line-height: 1.6;
+    font-weight: 700;
+  }
+}
 #form-search {
   width: 100%;
   display: flex;
@@ -77,7 +92,7 @@ footer {
   color: var(--color-siena);
 }
 #productos-container {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
