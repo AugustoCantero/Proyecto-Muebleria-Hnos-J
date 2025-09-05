@@ -85,6 +85,10 @@ footer {
 }
 .articuloDeProducto {
   margin: 0.5rem;
+  transition: scale 0.15s linear;
+}
+.articuloDeProducto:hover {
+  scale: 1.03;
 }
 .articuloDeProducto a {
   cursor: pointer;
