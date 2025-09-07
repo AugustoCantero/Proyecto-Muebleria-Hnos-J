@@ -395,6 +395,9 @@ footer {
 
   .product-buy {
     gap: 24px;
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem
   }
 
   #form-contacto div {
