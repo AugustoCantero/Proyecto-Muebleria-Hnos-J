@@ -1,6 +1,7 @@
 # Equipo 6
 
 ## Página web de **Mueblería Hermanos Jota**
+[Link de despliegue](https://proyecto-muebleria-hnos-j.vercel.app/)
 
 ### Participantes
 
