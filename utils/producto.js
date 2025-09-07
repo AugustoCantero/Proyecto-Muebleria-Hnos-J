@@ -9,7 +9,6 @@ productTitle.textContent = producto.nombre
 const container = document.getElementById('producto-container')
 
 // div de la imagen
-
 const divImg = document.createElement('div')
 divImg.classList.add('product-img')
 

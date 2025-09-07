@@ -22,9 +22,10 @@ formulario.addEventListener('submit', function(event) {
         return;
     }
 
-    // Si la validación es exitosa, muestra un mensaje de éxito
+    // Si la validació exitosa, muestra un mensan esje de éxito
     const main = document.querySelector('main');
     const mensajeExito = document.createElement('p');
+    mensajeExito.classList.add('mensajeExito')
     mensajeExito.textContent = '¡Mensaje enviado con éxito!';
     main.appendChild(mensajeExito);
 });
