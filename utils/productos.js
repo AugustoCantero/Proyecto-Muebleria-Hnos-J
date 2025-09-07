@@ -26,8 +26,8 @@ async function getProductos(filter = "") {
   productos.forEach((product) => {
     if (filter !== "") {
       if (
-        product.nombre.toLowerCase().includes(filter.toLowerCase()) ||
-        product.descripcion.toLowerCase().includes(filter.toLowerCase())
+        stringCleaner(product.nombre).includes(stringCleaner(filter)) ||
+        stringCleaner(product.descripcion).includes(stringCleaner(filter))
       ) {
         showProduct(product);
       }
@@ -52,3 +52,11 @@ formSearch.addEventListener("submit", (e) => {
 });
 
 getProductos();
+
+// Funcion para limpiar tildes y mayus
+function stringCleaner(palabras) {
+  return palabras
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
