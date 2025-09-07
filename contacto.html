@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/logo.svg" type="image/x-icon" />
+    <title>Hermanos Jota</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
   <body>
     <header>
       <img src="assets/logo.svg" alt="Logo" />
@@ -7,37 +14,50 @@
         <a href="index.html">Inicio</a>
         <a href="productos.html">Productos</a>
         <a href="contacto.html">Contacto</a>
-        <link rel="stylesheet" href="styles.css" />
       </nav>
     </header>
     <main>
-        <section id="presentacion-formulario">
+      <section id="presentacion-formulario">
         <h1 id="titulo">COMPARTA SU OPINION</h1>
         <p id="subtitulo">
-          En Hermanos Jota, sabemos que cada detalle cuenta, y es por ello que tu experiencia es nuestra máxima prioridad. 
-          Agradecemos profundamente el tiempo que dediques a hacernos saber tus comentarios y sugerencias, 
-          ya que ellos son fundamentales para seguir ofreciendo productos y servicios de la más alta calidad.
+          En Hermanos Jota, sabemos que cada detalle cuenta, y es por ello que
+          tu experiencia es nuestra máxima prioridad. Agradecemos profundamente
+          el tiempo que dediques a hacernos saber tus comentarios y sugerencias,
+          ya que ellos son fundamentales para seguir ofreciendo productos y
+          servicios de la más alta calidad.
         </p>
       </section>
-        <form id="form-contacto" action="/registrar" method="post">
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre"><br>
+      <form id="form-contacto" ">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" /><br />
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" /><br />
 
-                <label for="mensaje">Mensaje:</label><br>
-                <textarea id="mensaje" name="mensaje"></textarea><br>
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
+          <label for="mensaje">Mensaje:</label><br />
+          <textarea id="mensaje" name="mensaje"></textarea><br />
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
     </main>
     <footer>
+      <div class="footer-info">
+        <p>
+          <strong>Hermanos Jota — Casa Taller</strong> <br />Av. San Juan 2847
+          C1232AAB — Barrio de San Cristóbal Ciudad Autónoma de Buenos Aires
+          Argentina<br /><br />
+          <strong>Horarios:</strong><br />
+          Lunes a Viernes: 10:00 - 19:00 Sábados: 10:00 - 14:00
+          <br /><br />
+          <strong>Email: </strong> info@hermanosjota.com.ar
+        </p>
+      </div>
+
       <p class="textoSiena">
         © 2025 Hermanos Jota. Todos los derechos reservados.
       </p>
     </footer>
-    <script src="contacto.js"></script>
-    </body>
+    <script src="/utils/contacto.js"></script>
+  </body>
 </html>

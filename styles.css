@@ -29,6 +29,7 @@ header {
   background: #ffffff;
   padding: 1rem 2rem;
   color: #fff;
+  font-family: sans-serif;
 }
 
 header img {
@@ -49,7 +50,9 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
-
+main {
+  margin: 4rem 0;
+}
 footer {
   background: #ffffff;
   color: #fff;
@@ -57,6 +60,14 @@ footer {
   padding: 20px;
   position: relative;
   bottom: 0;
+  font-family: sans-serif;
+}
+
+.footer-info {
+  color: var(--color-siena);
+  p {
+    text-align: left;
+  }
 }
 
 /* PRODUCTOS */
@@ -264,27 +275,6 @@ footer {
   margin-top: 10px;
 }
 
-@media (min-width: 768px) {
-  #producto-container {
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0 32px;
-    gap: 32px;
-  }
-
-  .product-img {
-    flex: 0 0 350px;
-  }
-
-  .product-info {
-    flex: 1;
-  }
-
-  .product-buy {
-    gap: 24px;
-  }
-}
-
 /* CONTACTO */
 #presentacion-formulario {
   h1 {
@@ -292,6 +282,8 @@ footer {
     font-family: Georgia, sans-serif;
     letter-spacing: 0.1em;
     font-weight: 700;
+    width: 75%;
+    margin: 1rem auto;
     text-align: center;
     color: var(--color-siena);
   }
@@ -314,9 +306,13 @@ footer {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-siena);
+  width: 100%;
+}
+#form-contacto div {
+  width: 75%;
 }
 #form-contacto input,
-textarea {
+#form-contacto textarea {
   display: flex;
   padding: 0.5rem;
   border: 1px solid var(--color-siena);
@@ -324,6 +320,7 @@ textarea {
   outline: 0;
   font-size: 1rem;
   color: var(--color-oro);
+  width: 95%;
 }
 #form-contacto button {
   display: flex;
@@ -378,4 +375,30 @@ textarea {
 .producto img {
   width: 100%;
   border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  #producto-container {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 32px;
+    gap: 32px;
+  }
+
+  .product-img {
+    flex: 0 0 350px;
+  }
+
+  .product-info {
+    flex: 1;
+  }
+
+  .product-buy {
+    gap: 24px;
+  }
+
+  #form-contacto div {
+    width: 40%;
+    margin: 0 auto;
+  }
 }
