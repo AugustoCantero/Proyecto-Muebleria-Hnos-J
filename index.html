@@ -17,16 +17,25 @@
         <a href="contacto.html">Contacto</a>
       </nav>
     </header>
+    <main id="main-index">
+      <div id="carrito-container">
+        <p id='num-carrito'>0</p>
+        <img
+          id="img-carrito"
+          src="assets/carrito-de-compras.png"
+          alt="Carrito de compras"
+        />
+      </div>
+      <section class="hero">
+        <h1 class="textoSiena">Bienvenido a Hermanos Jota</h1>
+        <p>Artesanía en madera con historia y diseño moderno.</p>
+      </section>
 
-    <section class="hero">
-      <h1 class="textoSiena">Bienvenido a Hermanos Jota</h1>
-      <p>Artesanía en madera con historia y diseño moderno.</p>
-    </section>
-
-    <section class="productos-destacados">
-      <h2>Productos Destacados</h2>
-      <div class="grid" id="productos-destacados"></div>
-    </section>
+      <section class="productos-destacados">
+        <h2>Productos Destacados</h2>
+        <div class="grid" id="productos-destacados"></div>
+      </section>
+    </main>
 
     <footer>
       <div class="footer-info">
@@ -47,6 +56,7 @@
     </footer>
 
     <script src="archivo.js"></script>
+     <script src="/utils/carrito.js"></script>
     <script src="./utils/productosdest.js"></script>
   </body>
 </html>

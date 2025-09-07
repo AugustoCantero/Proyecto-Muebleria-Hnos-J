@@ -54,8 +54,8 @@ detallesProducto.forEach(atributo => {
 const divCompra = document.createElement('div')
 divCompra.classList.add('product-buy')
 
-const precio = document.createElement('span')
-precio.textContent = `Precio: $${Math.round(Math.random() * 500 + 500)}`
+const precio = document.createElement('p')
+precio.innerHTML = `Precio: <span>$${Math.round(Math.random() * 500 + 500)}</span>`
 
 const boton = document.createElement('button')
 boton.textContent = 'Añadir al carrito' 
@@ -66,14 +66,14 @@ if(!localStorage.getItem('contador-carrito')){
 }
 
 let contadorCarrito = Number(localStorage.getItem('contador-carrito'))
-const contador = document.createElement('span')
-contador.textContent = contadorCarrito
+// const contador = document.createElement('span')
+// contador.textContent = contadorCarrito
 
 
 boton.addEventListener('click', ()=> {
     contadorCarrito += 1;
     localStorage.setItem('contador-carrito', contadorCarrito)
-    contador.textContent = contadorCarrito
+    numeroCarrito.textContent = contadorCarrito
     mostrarMensaje('Producto añadido al carrito')
 })
 

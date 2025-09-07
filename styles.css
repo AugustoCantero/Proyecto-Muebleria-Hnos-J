@@ -20,6 +20,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
+  position: relative;
 }
 
 header {
@@ -53,6 +54,32 @@ nav a:hover {
 main {
   margin: 4rem 0;
 }
+
+#main-index {
+  margin: 0;
+}
+
+#carrito-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0 1rem;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  border: 2px solid #d4a437;
+  cursor: pointer;
+  width: fit-content;
+  z-index: 100;
+}
+
+#img-carrito {
+  width: 30px;
+  height: 30px;
+}
+
 footer {
   background: #ffffff;
   color: #fff;
@@ -222,10 +249,14 @@ footer {
   flex-wrap: wrap;
 }
 
-.product-buy span {
+.product-buy p {
+  margin: 0;
   font-weight: bold;
   font-size: 1.3rem;
   color: #8b5e3c;
+  span{
+    font-family: sans-serif;
+  }
 }
 
 .product-buy button {
@@ -397,7 +428,7 @@ footer {
     gap: 24px;
     display: flex;
     flex-direction: column;
-    margin-top: .5rem
+    margin-top: 0.5rem;
   }
 
   #form-contacto div {
