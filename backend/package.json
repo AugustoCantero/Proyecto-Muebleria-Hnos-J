@@ -1,0 +1,28 @@
+{
+  "name": "proyecto-muebleria-hnos-j",
+  "version": "1.0.0",
+  "description": "[Link de despliegue](https://proyecto-muebleria-hnos-j.vercel.app/)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AugustoCantero/Proyecto-Muebleria-Hnos-J.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "bugs": {
+    "url": "https://github.com/AugustoCantero/Proyecto-Muebleria-Hnos-J/issues"
+  },
+  "homepage": "https://github.com/AugustoCantero/Proyecto-Muebleria-Hnos-J#readme",
+  "keywords": []
+}

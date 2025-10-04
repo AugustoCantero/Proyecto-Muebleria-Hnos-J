@@ -154,3 +154,4 @@ const productos = [
     certificacion: "Ergonomía europea EN 1335",
   },
 ];
+module.exports = {productos};
