@@ -5,8 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const logger=require("./mi-logger");
 
-// Importamos nuestro nuevo módulo de rutas
+// Importamos nuestros nuevos módulos de rutas
 const productRoutes = require('./routes/productRoutes'); // (Haríamos lo mismo para productos)
+const manejadorDeErrores = require('./routes/error');
 
 
 // Middleware para parsear JSON. ¡Crucial para peticiones POST/PUT!
@@ -23,7 +24,6 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes);
 
 // Incorporamos error.js para manejo de errores
-const manejadorDeErrores = require('./routes/error');
 app.use(manejadorDeErrores);
  
 app.listen(PORT, () => {
