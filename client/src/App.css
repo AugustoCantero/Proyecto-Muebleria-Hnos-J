@@ -91,9 +91,7 @@ footer {
 
 .footer-info {
   color: var(--color-siena);
-  p {
-    text-align: left;
-  }
+  text-align: left;
 }
 
 /* PRODUCTOS */
