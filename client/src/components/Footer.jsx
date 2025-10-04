@@ -1,6 +1,6 @@
 export default function Footer(){
     return <footer>
-        <p class="footer-info">
+        <p className="footer-info">
           <strong>Hermanos Jota — Casa Taller</strong> <br />Av. San Juan 2847
           C1232AAB — Barrio de San Cristóbal Ciudad Autónoma de Buenos Aires
           Argentina<br /><br />
@@ -9,7 +9,7 @@ export default function Footer(){
           <br /><br />
           <strong>Email: </strong> info@hermanosjota.com.ar
         </p>
-        <p class="textoSiena">
+        <p className="textoSiena">
         © 2025 Hermanos Jota. Todos los derechos reservados.
         </p>
       </footer>
