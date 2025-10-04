@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
   
   // Enviamos una respuesta de éxito con el código 201 (Created).
     res.status(201).json({ message: 'Producto creado con éxito', 
-    product: nuevoProducto });
+    producto: nuevoProducto });
 });
+
 module.exports = router;

@@ -21,7 +21,10 @@ app.get('/', (req, res) => {
 }); 
 
 app.use('/api/products', productRoutes);
-// ...
+
+// Incorporamos error.js para manejo de errores
+const manejadorDeErrores = require('./routes/error');
+app.use(manejadorDeErrores);
  
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
