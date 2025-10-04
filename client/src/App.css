@@ -170,7 +170,7 @@ footer {
   align-items: center;
   gap: 24px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 32px auto;
   padding: 0 16px;
   font-family: "Georgia", serif;
 }
