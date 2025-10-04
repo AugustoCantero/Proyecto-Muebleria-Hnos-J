@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
-const logger=require("./mi-logger");
+const logger=require("./middlewares/mi-logger");
 
 // Importamos nuestros nuevos módulos de rutas
 const productRoutes = require('./routes/productRoutes'); // (Haríamos lo mismo para productos)
