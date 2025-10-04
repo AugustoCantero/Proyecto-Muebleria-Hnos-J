@@ -78,7 +78,7 @@ const productos = [
   {
     id: 6,
     nombre: "Cama Neuquén",
-    img: "assets/cama neuquen.png",
+    img: "assets/Cama Neuquén.png",
     descripcion:
       "Cama plataforma con cabecero flotante tapizado en lino natural.",
       descripcionCompleta:"Cama plataforma con cabecero flotante tapizado en lino natural y estructura de madera maciza. Su diseño minimalista y sofisticado crea un ambiente de serenidad y elegancia, perfecto para dormitorios contemporáneos que buscan paz y simplicidad.",

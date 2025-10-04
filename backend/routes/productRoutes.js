@@ -4,19 +4,13 @@ const router = express.Router(); // ¡Creamos una instancia de Router!
 // Datos de ejemplo
 const {productos} = require ('../archivo');
 
+
 // GET /api/products/  (la ruta es relativa al punto de montaje)
 router.get('/', (req, res) => {
   res.json(productos);
 });
 
-// GET /api/products/:id
-router.get('/:id', (req, res) => {
-  const producto = productos.find(u => u.id === parseInt(req.params.id));
-  if (!producto) {
-    return res.status(404).json({ message: 'Producto no encontrado' });
-  }
-  res.json(producto);
-});
+
 
 // POST /api/products/
 
