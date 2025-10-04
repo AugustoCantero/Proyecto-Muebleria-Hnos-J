@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Carrito from "./components/Carrito";
 
 export default function App() {
   const [page, setPage] = useState("inicio");
@@ -9,8 +10,8 @@ export default function App() {
   return (
     <>
       <Header setPage={setPage} />
-      <main className="mainContent">
-        {}</main>;
+      <main className="mainContent">{}</main>
+      <Carrito />
       <Footer />
     </>
   );
