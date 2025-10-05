@@ -10,7 +10,14 @@ router.get('/', (req, res) => {
   res.json(productos);
 });
 
-
+// GET /api/products/:id (devuelve un producto en especifico)
+router.get('/:id', (req, res) => {
+  const producto = productos.find(u => u.id === parseInt(req.params.id));
+  if (!producto) {
+    return res.status(404).json({ message: 'Producto no encontrado' });
+  }
+  res.json(producto);
+});
 
 // POST /api/products/
 

@@ -5,7 +5,6 @@ const path = require('path')
 const app = express();
 const PORT = process.env.PORT || 4000;
 const logger=require("./middlewares/mi-logger");
-const path = require('path');
 
 // Importamos nuestros nuevos módulos de rutas
 const productRoutes = require('./routes/productRoutes'); // (Haríamos lo mismo para productos)
@@ -26,6 +25,8 @@ app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al API de Mueblería Jota!');
 }); 
+
+
 
 app.use('/api/products', productRoutes);
 
