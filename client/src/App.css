@@ -370,8 +370,10 @@ footer {
   color: white;
   cursor: pointer;
 }
-.mensajeExito {
+.mensajeError {
+  justify-content: center;
   text-align: center;
+  color: var(--color-siena);
 }
 
 /*hero banner*/

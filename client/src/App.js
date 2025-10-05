@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Carrito from "./components/Carrito";
 import ProductDetail from "./components/ProductDetail";
 import ProductCard from "./components/ProductCard";
-
+import ContactForm from "./components/ContactForm";
 
 export default function App() {
   const [page, setPage] = useState("inicio");
