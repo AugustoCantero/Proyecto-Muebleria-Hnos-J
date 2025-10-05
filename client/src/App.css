@@ -38,6 +38,9 @@ header img {
 nav button {
   background: none;
   border: none;
+nav button {
+  background: none;
+  border: none;
   color: #a0522d;
   text-decoration: none;
   margin-left: 15px;
@@ -45,6 +48,7 @@ nav button {
   cursor: pointer;
 }
 
+nav button:hover {
 nav button:hover {
   text-decoration: underline;
 }
@@ -63,6 +67,7 @@ nav button:hover {
   font-family: sans-serif;
   display: flex;
   align-items: center;
+  gap: 6px;
   gap: 6px;
   border: 2px solid #d4a437;
   cursor: pointer;
@@ -96,6 +101,7 @@ footer {
   margin: 0 auto;
   h1 {
     font-family:  Georgia, 'Times New Roman', Times, serif;
+    font-family:  Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 0.1em;
     font-weight: 700;
@@ -104,6 +110,7 @@ footer {
   p {
     line-height: 1.6;
     font-weight: 700;
+    font-family: sans-serif;
     font-family: sans-serif;
   }
 }
@@ -171,6 +178,7 @@ footer {
   align-items: center;
   gap: 24px;
   max-width: 1200px;
+  margin: 32px auto;
   margin: 32px auto;
   padding: 0 16px;
   font-family: "Georgia", serif;
@@ -297,6 +305,13 @@ footer {
   z-index: 9999;
 }
 
+.mensaje-carrito-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
 .mensaje-carrito {
   background-color: #28a745;
   color: white;
@@ -373,7 +388,10 @@ footer {
 }
 .mensajeError {
   justify-content: center;
+.mensajeError {
+  justify-content: center;
   text-align: center;
+  color: var(--color-siena);
   color: var(--color-siena);
 }
 
@@ -391,8 +409,18 @@ footer {
 
 /*productos destacados*/
 .productos-destacados-container {
+.productos-destacados-container {
   padding: 2rem;
   text-align: center;
+ 
+  h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+}
+#productos-destacados{
+ display: flex;
+  flex-direction: column;
+  align-items: center;
  
   h1 {
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -407,10 +435,13 @@ footer {
   display: grid;
   margin: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
 .producto img {
+  width: 70%;
   width: 70%;
   border-radius: 4px;
 }
@@ -421,6 +452,11 @@ footer {
     align-items: flex-start;
     padding: 0 32px;
     gap: 32px;
+  }
+
+  #productos-destacados{
+    flex-direction: row;
+    justify-content: center;
   }
 
   #productos-destacados{
