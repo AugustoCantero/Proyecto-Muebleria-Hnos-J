@@ -8,9 +8,42 @@
 * Augusto Cantero
 * Jeronimo Lautaro Cardu Goldsworthy
 * Amir Ale
-* Ignacio Nallar
 
 ---
+# Instrucciones
+
+## Instalacion de dependencias
+En la terminal, estando situado en la carpeta del Backend con "cd backend", hacemos "npm install". y repetimos lo mismo en la carpeta del cliente ("cd client")
+Eso instalaria todas las dependencias en las versiones especificas que usa el proyecto
+
+## Correr el proyecto
+En la terminal, vamos a situarnos en la carpeta del **/backend** y alli hacer "npm run dev" ( inicializando el server en el puerto 4000)
+Luego vamos a otra terminal (si no tenes otra, la creas dandole al signo mas arriba a la derecha en la ventana de la terminal), en la carpeta **/client** hacemos
+"npm start"
+
+## Uso de la API
+*/* -> Bienvenida a la api (uso para pruebas de funcionamiento)
+*/api/products* -> Lista de productos en formato JSON
+*/api/products/:id* -> Datos de un producto en especifico en formato JSON
+
+# Arquitectura y Desiciones tomadas
+
+Para la estructura del proyecto dividimos backend de frontend.
+### Backend
+*/assets* -> Imagenes del proyecto
+*/routes* -> uso de expressRouter() para peticiones HTTP a la API y manejo de errores
+*/middlewares* -> logger para muestreo de peticiones HTTP a la API
+*arhivo.js* -> lista de productos
+*server.js* -> Inicializador del servidor backend
+
+### Frontend
+*/public* -> Contendor del archivo HTML donde se encuentra el elemento #root para el renderizado con React
+*/src/components* -> Todos los componentes hechos con React, usados en la pagina web
+*App.js* -> Componente principal donde se realizan los re-renderizados condicionales (simulando uso de ReactRouter)
+*App.css y index.css* -> Contienen los estilos de los componentes y la pagina web
+
+# Decisiones Tomadas
+- El componente del carrito lo dejamos como un estilo *absolute* para acompañe el scroll. (posible cambios en el futuro)
 
 # Funcionalidad
 Creación de una pagina web estatica con tres secciones.
@@ -49,4 +82,8 @@ Información general sobre la empresa, como dirección, horarios y contacto.tos 
 * CSS
 * JavaScript
 * GIT y GitHub
+* NodeJS + Express
+* Nodemon
+* React
+* React-icons
 

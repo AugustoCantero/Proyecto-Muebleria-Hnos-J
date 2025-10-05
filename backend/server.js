@@ -1,6 +1,7 @@
 // server.js
 const cors = require('cors');
 const express = require('express');
+const path = require('path')
 const app = express();
 const PORT = process.env.PORT || 4000;
 const logger=require("./middlewares/mi-logger");
@@ -15,13 +16,16 @@ const manejadorDeErrores = require('./routes/error');
 app.use(express.json());
 app.use(logger);
 app.use(cors());
-
+app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use('/api/products', productRoutes);
 // --- RUTAS ---
+
+
+
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al API de Mueblería Jota!');
 }); 
 
-app.use('/api/products', productRoutes);
 
 // Incorporamos error.js para manejo de errores
 app.use(manejadorDeErrores);
