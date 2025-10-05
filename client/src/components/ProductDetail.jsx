@@ -8,6 +8,7 @@ export default function ProductDetail({ productId }) {
   );
   const [precio, setPrecio] = useState(0);
 
+
   useEffect(() => {
     setPrecio(Math.round(Math.random() * 500 + 500));
   }, []);
@@ -15,6 +16,7 @@ export default function ProductDetail({ productId }) {
   useEffect(() => {
     if (!productId) return;
 
+    console.log(`http://localhost:4000/api/products/${productId}`)
     fetch(`http://localhost:4000/api/products/${productId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Producto no encontrado");
