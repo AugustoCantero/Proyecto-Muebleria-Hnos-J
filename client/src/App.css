@@ -35,9 +35,7 @@ header img {
   color: var(--color-siena);
 }
 
-nav button {
-  background: none;
-  border: none;
+
 nav button {
   background: none;
   border: none;
@@ -48,7 +46,6 @@ nav button {
   cursor: pointer;
 }
 
-nav button:hover {
 nav button:hover {
   text-decoration: underline;
 }
@@ -101,7 +98,6 @@ footer {
   margin: 0 auto;
   h1 {
     font-family:  Georgia, 'Times New Roman', Times, serif;
-    font-family:  Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 0.1em;
     font-weight: 700;
@@ -110,7 +106,6 @@ footer {
   p {
     line-height: 1.6;
     font-weight: 700;
-    font-family: sans-serif;
     font-family: sans-serif;
   }
 }
@@ -388,10 +383,7 @@ footer {
 }
 .mensajeError {
   justify-content: center;
-.mensajeError {
-  justify-content: center;
   text-align: center;
-  color: var(--color-siena);
   color: var(--color-siena);
 }
 
@@ -408,7 +400,6 @@ footer {
 }
 
 /*productos destacados*/
-.productos-destacados-container {
 .productos-destacados-container {
   padding: 2rem;
   text-align: center;
