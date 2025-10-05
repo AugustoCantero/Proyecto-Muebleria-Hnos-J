@@ -1,13 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrito from "./components/Carrito";
 import ProductDetail from "./components/ProductDetail";
 import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
-import ProductDetail from "./components/ProductDetail";
 
 export default function App() {
   const [page, setPage] = useState("inicio");
