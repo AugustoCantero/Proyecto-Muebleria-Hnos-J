@@ -311,6 +311,13 @@ footer {
   z-index: 1000;
 }
 
+.mensaje-carrito-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
 .mensaje-carrito {
   background-color: #28a745;
   color: white;
@@ -385,8 +392,10 @@ footer {
   color: white;
   cursor: pointer;
 }
-.mensajeExito {
+.mensajeError {
+  justify-content: center;
   text-align: center;
+  color: var(--color-siena);
 }
 
 /*hero banner*/
