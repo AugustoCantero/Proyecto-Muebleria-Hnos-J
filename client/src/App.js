@@ -1,18 +1,20 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrito from "./components/Carrito";
 import ProductDetail from "./components/ProductDetail";
 import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
-import ContactForm from './components/ContactForm'
+import ContactForm from './components/ContactForm';
 
 export default function App() {
-  const [page, setPage] = useState("inicio");
   const [productos, setProductos] = useState([]);
-  const [carrito, setCarrito] = useState([])
-   console.log(carrito)
+  const [carrito, setCarrito] = useState([]);
+
+  // Traer productos desde el backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -24,43 +26,58 @@ export default function App() {
         console.log(error);
       }
     };
-
     fetchProducts();
   }, []);
 
   return (
-    <>
-      <Header setPage={setPage} />
+    <Router>
+      <Header />
       <main>
-        {page === "inicio" ? (
-          <>
-            <section className="hero">
-              <h1 className="textoSiena">Bienvenido a Hermanos Jota</h1>
-              <p>Artesanía en madera con historia y diseño moderno.</p>
-            </section>
+        <Routes>
+          {/* HOME */}
+          <Route 
+            path="/" 
+            element={
+              <>
+                <section className="hero">
+                  <h1 className="textoSiena">Bienvenido a Hermanos Jota</h1>
+                  <p>Artesanía en madera con historia y diseño moderno.</p>
+                </section>
 
-            <section className="productos-destacados-container">
-              <h1>PRODUCTOS DESTACADOS</h1>
-              <div className="grid" id="productos-destacados">
-                {productos.slice(0, 4).map((prod) => (
-                  <ProductCard setPage={setPage} key={prod.id} props={prod} />
-                ))}
-              </div>
-            </section>
-          </>
-        ) : page === "productos" ? (
-          <>
-            <ProductList setPage={setPage} productos={productos} />
-          </>
-        ) : page === "contacto" ? (
-          <ContactForm/>
-        ) : (
-          <ProductDetail carrito={carrito} setCarrito={setCarrito} productId={page} />
-        )}
+                <section className="productos-destacados-container">
+                  <h1>PRODUCTOS DESTACADOS</h1>
+                  <div className="grid" id="productos-destacados">
+                    {productos.slice(0, 4).map((prod) => (
+                      <ProductCard key={prod.id} producto={prod} />
+                    ))}
+                  </div>
+                </section>
+              </>
+            } 
+          />
+
+          {/* LISTA DE PRODUCTOS */}
+          <Route 
+            path="/productos" 
+            element={<ProductList productos={productos} />} 
+          />
+
+          {/* CONTACTO */}
+          <Route 
+            path="/contacto" 
+            element={<ContactForm />} 
+          />
+
+          {/* DETALLE DE PRODUCTO */}
+          <Route 
+            path="/producto/:id" 
+            element={<ProductDetail carrito={carrito} setCarrito={setCarrito} />} 
+          />
+        </Routes>
       </main>
 
       <Carrito carrito={carrito} />
       <Footer />
-    </>
+    </Router>
   );
 }

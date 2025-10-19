@@ -35,10 +35,7 @@ header img {
   color: var(--color-siena);
 }
 
-
-nav button {
-  background: none;
-  border: none;
+nav a {
   color: #a0522d;
   text-decoration: none;
   margin-left: 15px;
@@ -46,7 +43,7 @@ nav button {
   cursor: pointer;
 }
 
-nav button:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
@@ -142,27 +139,31 @@ footer {
   grid-template-rows: 40% 60%;
   border-radius: 1rem;
   text-decoration: none;
-  padding:1.5rem;
+  padding: 1.5rem;
   border: 1px solid #ddd;
   text-align: center;
 
-  /* cssGenerator.org */
+
   box-shadow: 1px -1px 33px -5px rgba(150, 112, 65, 0.23);
   -webkit-box-shadow: 1px -1px 33px -5px rgba(150, 112, 65, 0.23);
   -moz-box-shadow: 1px -1px 33px -5px rgba(150, 112, 65, 0.23);
-  h2 {
-    color: brown;
-  }
-  p {
-    color: var(--color-siena);
-  }
 }
 .articuloDeProducto:hover {
   scale: 1.03;
 }
+.articuloDeProducto > a {
+  display: contents;
+}
 .articuloDeProducto img {
   width: 100%;
   margin: auto;
+}
+.articuloDeProducto h2 {
+  color: brown;
+}
+
+.articuloDeProducto p {
+  color: var(--color-siena);
 }
 
 /* PRODUCTO */

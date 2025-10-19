@@ -1,11 +1,15 @@
-export default function ProductCard({ props, setPage }) {
+import { Link } from "react-router-dom";
+
+export default function ProductCard({ producto }) {
   return (
-    <article onClick={() => setPage(`${props.id}`)} className="articuloDeProducto">
-      <img src={`http://localhost:4000/${props.img}`} alt={props.nombre} />
-      <div>
-        <h2>{props.nombre}</h2>
-        <p>{props.descripcion}</p>
-      </div>
+    <article className="articuloDeProducto">
+      <Link to={`/producto/${producto.id}`}>
+        <img src={`http://localhost:4000/${producto.img}`} alt={producto.nombre} />
+        <div>
+          <h2>{producto.nombre}</h2>
+          <p>{producto.descripcion}</p>
+        </div>
+      </Link>
     </article>
   );
 }

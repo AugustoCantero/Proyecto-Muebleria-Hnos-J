@@ -1,12 +1,17 @@
 import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function ProductList({ productos, setPage }) {
+export default function ProductList({ productos }) {
   const [loading, setLoading] = useState(true);
   const [valueFilter, setValueFilter] = useState("");
-  setTimeout(() => {
-    setLoading(false);
-  }, 1600);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1600);
+
+    return () => clearTimeout(timer); // limpieza del timeout
+  }, []);
 
   function stringCleaner(palabras) {
     return palabras
@@ -14,6 +19,7 @@ export default function ProductList({ productos, setPage }) {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
   }
+
   return (
     <>
       {loading ? (
@@ -42,20 +48,12 @@ export default function ProductList({ productos, setPage }) {
 
           <section id="productos-container">
             {productos
-              .filter((prod) => {
-                if (
-                  stringCleaner(prod.nombre).includes(
-                    stringCleaner(valueFilter)
-                  ) ||
-                  stringCleaner(prod.descripcion).includes(
-                    stringCleaner(valueFilter)
-                  )
-                ) {
-                  return prod;
-                }
-              })
+              .filter((prod) =>
+                stringCleaner(prod.nombre).includes(stringCleaner(valueFilter)) ||
+                stringCleaner(prod.descripcion).includes(stringCleaner(valueFilter))
+              )
               .map((prod) => (
-                <ProductCard setPage={setPage} key={prod.id} props={prod} />
+                <ProductCard key={prod.id} producto={prod} />
               ))}
           </section>
         </>
