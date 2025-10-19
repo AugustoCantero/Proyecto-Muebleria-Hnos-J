@@ -70,7 +70,7 @@ export default function App() {
 
           {/* DETALLE DE PRODUCTO */}
           <Route 
-            path="/producto/:id" 
+            path="/productos/:id" 
             element={<ProductDetail carrito={carrito} setCarrito={setCarrito} />} 
           />
         </Routes>
