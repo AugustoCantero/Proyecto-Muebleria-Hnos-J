@@ -7,7 +7,7 @@ export default function ProductCard({ producto }) {
         <img src={`http://localhost:4000/${producto.img}`} alt={producto.nombre} />
         <div>
           <h2>{producto.nombre}</h2>
-          <p>{producto.descripcion}</p>
+          <p>{producto.descripcion.split('.')[0]}.</p>
         </div>
       </Link>
     </article>

@@ -1,4 +1,6 @@
-// server.js
+const mongoose = require('mongoose');
+require('dotenv').config();
+
 const cors = require('cors');
 const express = require('express');
 const path = require('path')
@@ -10,6 +12,9 @@ const logger=require("./middlewares/mi-logger");
 const productRoutes = require('./routes/productRoutes'); // (Haríamos lo mismo para productos)
 const manejadorDeErrores = require('./routes/error');
 
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("Conectado a MongoDB Atlas"))
+  .catch((err) => console.error("Error al conectar MongoDB:", err));
 
 // Middleware para parsear JSON. ¡Crucial para peticiones POST/PUT!
 // Le dice a Express que si llega un cuerpo de petición en formato JSON, lo convierta en un objeto JavaScript.

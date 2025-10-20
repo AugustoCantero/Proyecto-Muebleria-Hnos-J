@@ -62,7 +62,7 @@ export default function ProductDetail({ carrito, setCarrito }) {
 
       <div className="product-info">
         <h3>{producto.nombre}</h3>
-        <p>{producto.descripcionCompleta}</p>
+        <p>{producto.descripcion}</p>
         <table>
           <tbody>
             {detallesProducto.map((atributo) => (
