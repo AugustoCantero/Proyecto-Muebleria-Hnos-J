@@ -1,12 +1,11 @@
-export default function NavBar({ setPage }) {
-  const handleSetPage = (e) => {
-    setPage(e.currentTarget.textContent.toLowerCase());
-  };
+import { Link } from "react-router-dom";
+
+export default function NavBar() {
   return (
     <nav className="textoSiena">
-      <button onClick={handleSetPage}>Inicio</button>
-      <button onClick={handleSetPage}>Productos</button>
-      <button onClick={handleSetPage}>Contacto</button>
+      <Link to="/">Inicio</Link>
+      <Link to="/productos">Productos</Link>
+      <Link to="/contacto">Contacto</Link>
     </nav>
   );
 }
