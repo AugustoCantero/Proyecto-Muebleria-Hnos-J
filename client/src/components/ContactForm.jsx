@@ -8,7 +8,7 @@ console.log del OBJETO de estado que contiene
 los datos del formulario y mostrar un
 mensaje de éxito en la UI.
  */
-import React, { useState } from 'react';
+import { useState } from 'react';
 export default function ContactForm(){
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
