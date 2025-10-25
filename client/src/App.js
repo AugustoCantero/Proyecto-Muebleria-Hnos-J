@@ -13,17 +13,21 @@ import ContactForm from "./components/ContactForm";
 export default function App() {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   // Traer productos desde el backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await fetch("http://localhost:4000/api/products");
+        const data = await fetch("http://localhost:4000/api/psroducts");
         if (!data.ok) throw new Error("Error en la petición: " + data.status);
         const response = await data.json();
         setProductos(response);
       } catch (error) {
         console.log(error);
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -48,7 +52,7 @@ export default function App() {
                   <h1>PRODUCTOS DESTACADOS</h1>
                   <div className="grid" id="productos-destacados">
                     {productos.slice(0, 4).map((prod) => (
-                      <ProductCard key={prod.id} producto={prod} />
+                      <ProductCard key={prod._id} producto={prod} />
                     ))}
                   </div>
                 </section>
@@ -59,7 +63,7 @@ export default function App() {
           {/* LISTA DE PRODUCTOS */}
           <Route
             path="/productos"
-            element={<ProductList productos={productos} />}
+            element={<ProductList loading={loading} error={error} productos={productos} />}
           />
 
           {/* CONTACTO */}
