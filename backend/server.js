@@ -5,7 +5,7 @@ const cors = require("cors");
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT_BACKEND;
 const logger = require("./middlewares/mi-logger");
 
 // Importamos nuestros nuevos módulos de rutas

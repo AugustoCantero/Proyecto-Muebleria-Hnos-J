@@ -8,7 +8,7 @@ import Carrito from "./components/Carrito";
 import ProductDetail from "./components/ProductDetail";
 import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
-import ContactForm from './components/ContactForm';
+import ContactForm from "./components/ContactForm";
 
 export default function App() {
   const [productos, setProductos] = useState([]);
@@ -35,8 +35,8 @@ export default function App() {
       <main>
         <Routes>
           {/* HOME */}
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <>
                 <section className="hero">
@@ -53,25 +53,24 @@ export default function App() {
                   </div>
                 </section>
               </>
-            } 
+            }
           />
 
           {/* LISTA DE PRODUCTOS */}
-          <Route 
-            path="/productos" 
-            element={<ProductList productos={productos} />} 
+          <Route
+            path="/productos"
+            element={<ProductList productos={productos} />}
           />
 
           {/* CONTACTO */}
-          <Route 
-            path="/contacto" 
-            element={<ContactForm />} 
-          />
+          <Route path="/contacto" element={<ContactForm />} />
 
           {/* DETALLE DE PRODUCTO */}
-          <Route 
-            path="/productos/:id" 
-            element={<ProductDetail carrito={carrito} setCarrito={setCarrito} />} 
+          <Route
+            path="/productos/:id"
+            element={
+              <ProductDetail carrito={carrito} setCarrito={setCarrito} />
+            }
           />
         </Routes>
       </main>
