@@ -1,5 +1,4 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
 const connectDB = require("./db");
 const cors = require("cors");
 const express = require("express");
@@ -11,6 +10,7 @@ const logger = require("./middlewares/mi-logger");
 // Importamos nuestros nuevos módulos de rutas
 const productRoutes = require("./routes/productRoutes"); // (Haríamos lo mismo para productos)
 const manejadorDeErrores = require("./routes/error");
+const contactRoutes = require("./routes/conctacRoutes");
 
 // Conectamos a la base de datos 
 connectDB();
@@ -23,6 +23,7 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 // --- RUTAS ---
 app.use("/api/products", productRoutes);
+app.use("/api/contact", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al API de Mueblería Jota!");
