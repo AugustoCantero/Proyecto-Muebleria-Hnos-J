@@ -5,11 +5,6 @@ export default function ProductDetail({ carrito, setCarrito }) {
   const { id } = useParams(); // captura el id de la URL
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [precio, setPrecio] = useState(0);
-
-  useEffect(() => {
-    setPrecio(Math.round(Math.random() * 500 + 500));
-  }, []);
 
   useEffect(() => {
     fetch(`https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`)
@@ -50,8 +45,10 @@ export default function ProductDetail({ carrito, setCarrito }) {
   if (loading) return <p style={{textAlign: 'center'}}>Cargando producto...</p>;
   if (!producto) return <p style={{textAlign: 'center'}}>No se encontró el producto.</p>;
 
-  const detallesProducto = Object.keys(producto).slice(
-    Object.keys(producto).indexOf("medidas")
+  const atributosExcluidos = ["_id","nombre", "descripcion", "img", "stock", "precio"];
+
+  const detallesProducto = Object.keys(producto).filter(
+    (atributo) => !atributosExcluidos.includes(atributo) && producto[atributo]
   );
 
   return (
@@ -76,7 +73,7 @@ export default function ProductDetail({ carrito, setCarrito }) {
       </div>
 
       <div className="product-buy">
-        <span>Precio: ${precio}</span>
+        <span>Precio: ${producto.precio}</span>
         <button onClick={handleAgregarCarrito}>Añadir al carrito</button>
       </div>
     </section>

@@ -51,7 +51,7 @@ export default function ProductList({ productos, loading, error }) {
               )
           )
           .map((prod) => (
-            <ProductCard key={prod.id} producto={prod} />
+            <ProductCard key={prod._id} producto={prod} />
           ))}
       </section>
     </>

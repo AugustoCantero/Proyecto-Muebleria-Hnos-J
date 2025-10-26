@@ -7,7 +7,7 @@ export default function ProductCard({ producto }) {
         <img src={`https://proyecto-muebleria-hnos-j-1.onrender.com/${producto.img}`} alt={producto.nombre} />
         <div>
           <h2>{producto.nombre}</h2>
-          <p>{producto.descripcion.split('.')[0]}.</p>
+          <p>{producto.descripcion ? producto.descripcion.split('.')[0] + '.' : 'Sin descripción'}</p>
         </div>
       </Link>
     </article>

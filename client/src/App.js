@@ -9,6 +9,7 @@ import ProductDetail from "./components/ProductDetail";
 import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
 import ContactForm from "./components/ContactForm";
+import CrearProducto from "./components/CrearProducto";
 
 export default function App() {
   const [productos, setProductos] = useState([]);
@@ -75,6 +76,11 @@ export default function App() {
             element={
               <ProductDetail carrito={carrito} setCarrito={setCarrito} />
             }
+          />
+          {/* CREAR PRODUCTO */}
+          <Route 
+          path="/admin/crear-producto" 
+          element={<CrearProducto />} 
           />
         </Routes>
       </main>
