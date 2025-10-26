@@ -23,7 +23,7 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 // --- RUTAS ---
 app.use("/api/products", productRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api/contacts", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al API de Mueblería Jota!");
@@ -33,5 +33,5 @@ app.get("/", (req, res) => {
 app.use(manejadorDeErrores);
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en https://proyecto-muebleria-hnos-j-1.onrender.com/`);
 });

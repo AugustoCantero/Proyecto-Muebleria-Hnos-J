@@ -12,7 +12,7 @@ export default function ProductDetail({ carrito, setCarrito }) {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/products/${id}`)
+    fetch(`https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Producto no encontrado");
         return res.json();
@@ -57,7 +57,7 @@ export default function ProductDetail({ carrito, setCarrito }) {
   return (
     <section id="producto-container">
       <div className="product-img">
-        <img src={`http://localhost:4000/${producto.img}`} alt={producto.descripcion} width="400" />
+        <img src={`https://proyecto-muebleria-hnos-j-1.onrender.com/${producto.img}`} alt={producto.descripcion} width="400" />
       </div>
 
       <div className="product-info">

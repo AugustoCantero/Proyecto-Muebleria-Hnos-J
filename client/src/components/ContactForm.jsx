@@ -24,7 +24,7 @@ export default function ContactForm() {
         setError("Por favor, complete todos los campos del formulario.");
         return;
       }
-      const response = await fetch("http://localhost:4000/api/contact", {
+      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/contacts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
