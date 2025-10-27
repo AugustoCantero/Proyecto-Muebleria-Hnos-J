@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrito from "./components/Carrito";
-import ProductDetail from "./components/ProductDetail";
+import ProductDetail from "./pages/ProductDetail";
 import ProductCard from "./components/ProductCard";
-import ProductList from "./components/ProductList";
-import ContactForm from "./components/ContactForm";
-import CrearProducto from "./components/CrearProducto";
+import ProductList from "./pages/ProductList";
+import ContactForm from "./pages/ContactForm";
+import CrearProducto from "./pages/CrearProducto";
 
 export default function App() {
   const [productos, setProductos] = useState([]);
