@@ -135,6 +135,7 @@ footer {
   cursor: pointer;
   background: #fff;
   width: 10rem;
+  height: 25rem;
   display: grid;
   grid-template-rows: 40% 60%;
   border-radius: 1rem;
