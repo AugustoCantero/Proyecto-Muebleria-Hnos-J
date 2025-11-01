@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function ProductDetail({ carrito, setCarrito }) {
   const { id } = useParams(); // captura el id de la URL
+  const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     fetch(`https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`)
@@ -41,6 +43,27 @@ export default function ProductDetail({ carrito, setCarrito }) {
     // agregar al carrito
     setCarrito([...carrito, producto]);
   };
+  const [error, setError] = useState("");
+  
+  const handleBorrarProducto = async() => {
+    if (!window.confirm("¿Desea eliminar el producto?")) 
+      return;
+    try {
+       const response = await fetch(
+        `https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${producto._id}`, 
+        { method: "DELETE" }
+      );
+
+      if (!response.ok) {
+        throw new Error("Error en el borrado");
+      }
+
+      setError("Producto borrado con éxito!");
+      navigate(`/productos/`)
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   if (loading) return <p style={{textAlign: 'center'}}>Cargando producto...</p>;
   if (!producto) return <p style={{textAlign: 'center'}}>No se encontró el producto.</p>;
@@ -75,6 +98,7 @@ export default function ProductDetail({ carrito, setCarrito }) {
       <div className="product-buy">
         <span>Precio: ${producto.precio}</span>
         <button onClick={handleAgregarCarrito}>Añadir al carrito</button>
+        <button onClick={handleBorrarProducto}>Borrar producto</button>
       </div>
     </section>
   );
