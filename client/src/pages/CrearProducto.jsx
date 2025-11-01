@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CrearProducto() {
+export default function CrearProducto({setProductos}) {
   const [formData, setFormData] = useState({
     nombre: "",
     precio: "",
@@ -83,6 +83,7 @@ export default function CrearProducto() {
       if (response.ok) {
         const data = await response.json();
         const nuevoProducto = data.producto;
+        setProductos((prev) => [...prev, nuevoProducto]);
         navigate(`/productos/${nuevoProducto._id}`);
       } else {
         alert("Error al crear producto ❌");

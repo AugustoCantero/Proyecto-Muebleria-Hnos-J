@@ -20,7 +20,9 @@ export default function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/products");
+        const data = await fetch(
+          "https://proyecto-muebleria-hnos-j-1.onrender.com/api/products"
+        );
         if (!data.ok) throw new Error("Error en la petición: " + data.status);
         const response = await data.json();
         setProductos(response);
@@ -64,7 +66,13 @@ export default function App() {
           {/* LISTA DE PRODUCTOS */}
           <Route
             path="/productos"
-            element={<ProductList loading={loading} error={error} productos={productos} />}
+            element={
+              <ProductList
+                loading={loading}
+                error={error}
+                productos={productos}
+              />
+            }
           />
 
           {/* CONTACTO */}
@@ -74,13 +82,17 @@ export default function App() {
           <Route
             path="/productos/:id"
             element={
-              <ProductDetail carrito={carrito} setCarrito={setCarrito} />
+              <ProductDetail
+                setProductos={setProductos}
+                carrito={carrito}
+                setCarrito={setCarrito}
+              />
             }
           />
           {/* CREAR PRODUCTO */}
-          <Route 
-          path="/admin/crear-producto" 
-          element={<CrearProducto />} 
+          <Route
+            path="/admin/crear-producto"
+            element={<CrearProducto setProductos={setProductos} />}
           />
         </Routes>
       </main>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function ProductDetail({ carrito, setCarrito }) {
+export default function ProductDetail({ carrito, setCarrito, setProductos }) {
   const { id } = useParams(); // captura el id de la URL
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
@@ -58,10 +58,12 @@ export default function ProductDetail({ carrito, setCarrito }) {
         throw new Error("Error en el borrado");
       }
 
+      setProductos(prevProducts => prevProducts.filter(p => p._id !== producto._id));
       setError("Producto borrado con éxito!");
       navigate(`/productos/`)
-    } catch (error) {
-      setError(error.message);
+    } catch (err) {
+      setError(err.message);
+      console.log(error);
     }
   };
 
