@@ -65,6 +65,7 @@ Usamos variables de entorno que contiene la URI de la bbdd en atlas
 * Agregar productos al carrito
 * Realizar consultas
 * Crear productos (admin)
+* Editar productos (admin)
 * Eliminar productos (admin)
 
 ## Home
@@ -82,6 +83,9 @@ Donde podes dejar reseñas/preguntas sobre nuestros productos.
 ## Del lado del Admin
 ### Crear-Producto
 Pagina que contiene un formulario para crear productos.
+
+### Editar-Producto
+Pagina que contiene un formulario para editar un producto.
 
 ---
 
