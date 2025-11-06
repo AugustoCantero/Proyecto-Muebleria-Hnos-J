@@ -1,18 +1,36 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import opcionesExtras from "../data/opcionesExtras";
 
-export default function CrearProducto({setProductos}) {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    precio: "",
-    stock: "",
-    medidas: "",
-  });
-
-  const [extras, setExtras] = useState([]);
+export default function EditarProducto() {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [extras, setExtras] = useState([]);
+
+  useEffect(() => {
+    const fetchProducto = async () => {
+      try {
+        const response = await fetch(
+          `https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`
+        );
+        if (!response.ok) throw new Error("Error al obtener producto");
+        const data = await response.json();
+        setFormData(data);
+
+        const atributosExtras = Object.keys(data).filter(
+          (key) =>
+            !["nombre", "precio", "stock", "medidas", "_id", "__v"].includes(key)
+        );
+
+        setExtras(atributosExtras);
+      } catch (err) {
+        console.error(err);
+        alert("No se pudo cargar el producto");
+      }
+    };
+    fetchProducto();
+  }, [id]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,21 +66,19 @@ export default function CrearProducto({setProductos}) {
 
     try {
       const response = await fetch(
-        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/products",
+        `https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dataToSend),
         }
       );
 
       if (response.ok) {
-        const data = await response.json();
-        const nuevoProducto = data.producto;
-        setProductos((prev) => [...prev, nuevoProducto]);
-        navigate(`/productos/${nuevoProducto._id}`);
+        alert("Producto actualizado con éxito ✅");
+        navigate(`/productos/${id}`);
       } else {
-        alert("Error al crear producto ❌");
+        alert("Error al actualizar producto ❌");
       }
     } catch (err) {
       console.error(err);
@@ -71,15 +87,15 @@ export default function CrearProducto({setProductos}) {
   };
 
   return (
-    <section className="crear-producto">
-      <h2>Crear nuevo producto</h2>
+    <section className="editar-producto">
+      <h2>Editar producto</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Campos obligatorios */}
         <input
           name="nombre"
           placeholder="Nombre"
           onChange={handleChange}
-          value={formData.nombre}
+          value={formData.nombre || ""}
           required
         />
         <input
@@ -87,7 +103,7 @@ export default function CrearProducto({setProductos}) {
           type="number"
           placeholder="Precio"
           onChange={handleChange}
-          value={formData.precio}
+          value={formData.precio || ""}
           required
         />
         <input
@@ -95,14 +111,14 @@ export default function CrearProducto({setProductos}) {
           type="number"
           placeholder="Stock"
           onChange={handleChange}
-          value={formData.stock}
+          value={formData.stock || ""}
           required
         />
         <input
           name="medidas"
           placeholder="Medidas"
           onChange={handleChange}
-          value={formData.medidas}
+          value={formData.medidas || ""}
           required
         />
 
@@ -155,7 +171,7 @@ export default function CrearProducto({setProductos}) {
         <button type="button" onClick={addExtra}>
           + Agregar atributo
         </button>
-        <button type="submit">Crear producto</button>
+        <button type="submit">Guardar cambios</button>
       </form>
     </section>
   );

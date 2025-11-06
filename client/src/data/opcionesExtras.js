@@ -1,0 +1,27 @@
+const opcionesExtras = [
+    "descripcion",
+    "img",
+    "materiales",
+    "acabado",
+    "peso",
+    "capacidad",
+    "modulares",
+    "tapizado",
+    "confort",
+    "rotacion",
+    "garantia",
+    "cargaMaxima",
+    "almacenamiento",
+    "caracteristicas",
+    "colchon",
+    "estructura",
+    "relleno",
+    "sostenibilidad",
+    "extension",
+    "apilables",
+    "incluye",
+    "regulacion",
+    "certificacion",
+  ];
+  
+  export default opcionesExtras;

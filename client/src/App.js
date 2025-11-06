@@ -10,6 +10,7 @@ import ProductCard from "./components/ProductCard";
 import ProductList from "./pages/ProductList";
 import ContactForm from "./pages/ContactForm";
 import CrearProducto from "./pages/CrearProducto";
+import EditarProducto from "./pages/EditarProducto";
 
 export default function App() {
   const [productos, setProductos] = useState([]);
@@ -93,6 +94,10 @@ export default function App() {
           <Route
             path="/admin/crear-producto"
             element={<CrearProducto setProductos={setProductos} />}
+          />
+        <Route
+            path="/admin/editar-producto/:id"
+            element={<EditarProducto />}
           />
         </Routes>
       </main>
