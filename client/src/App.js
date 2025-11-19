@@ -5,12 +5,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrito from "./components/Carrito";
-import ProductDetail from "./pages/ProductDetail";
 import ProductCard from "./components/ProductCard";
+import ProductDetail from "./pages/ProductDetail";
 import ProductList from "./pages/ProductList";
 import ContactForm from "./pages/ContactForm";
 import CrearProducto from "./pages/CrearProducto";
 import EditarProducto from "./pages/EditarProducto";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
+import OrderDetail from "./pages/OrderDetail";
 
 export default function App() {
   const [productos, setProductos] = useState([]);
@@ -95,10 +99,15 @@ export default function App() {
             path="/admin/crear-producto"
             element={<CrearProducto setProductos={setProductos} />}
           />
-        <Route
+          <Route
             path="/admin/editar-producto/:id"
             element={<EditarProducto />}
           />
+        {/* USER PAGES */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/perfil" element={<ProfilePage />} />
+        <Route path="/pedidos/:id" element={<OrderDetail />} />
         </Routes>
       </main>
 

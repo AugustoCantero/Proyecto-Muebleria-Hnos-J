@@ -1,22 +1,19 @@
-const express = require("express");
-const router = express.Router();
-const contactModel = require("../models/ContactModel");
+const ContactModel = require("../models/ContactModel");
 
-// Ruta para manejar el formulario de contacto
-router.get("/", async (req, res) => {
+exports.getAllContacts = async (req, res) => {
   try {
-    const contactos = await contactModel.find();
+    const contactos = await ContactModel.find();
     res.status(200).json(contactos);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al obtener los mensajes" });
   }
-});
+};
 
-router.post("/", async (req, res) => {
+exports.createContact = async (req, res) => {
   const { name, email, message } = req.body;
   try {
-    const newContact = new contactModel({ name, email, message });
+    const newContact = new ContactModel({ name, email, message });
     await newContact.save();
     res
       .status(201)
@@ -25,6 +22,4 @@ router.post("/", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Error al enviar el mensaje" });
   }
-});
-
-module.exports = router;
+};
