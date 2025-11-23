@@ -24,7 +24,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Cargar carrito desde localStorage al iniciar
+  // Carga el carrito desde localStorage al iniciar
   useEffect(() => {
     const saved = localStorage.getItem("carrito");
     if (saved) {
@@ -36,12 +36,12 @@ export default function App() {
     }
   }, []);
 
-  // Guardar carrito en localStorage cada vez que cambie
+  // Guarda el carrito en localStorage cada vez que cambie
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
 
-  // Traer productos desde el backend
+  // Trae productos desde el backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {

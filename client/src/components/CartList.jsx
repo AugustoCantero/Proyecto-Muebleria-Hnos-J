@@ -6,7 +6,6 @@ export default function CartList() {
 
   if (!carrito.length) return <p>El carrito está vacío.</p>;
 
-  // Funciones para ajustar cantidad
   const aumentarCantidad = (id) => {
     const newCarrito = carrito.map((p) =>
       p._id === id ? { ...p, cantidad: p.cantidad + 1 } : p
@@ -24,13 +23,11 @@ export default function CartList() {
     setCarrito(newCarrito);
   };
 
-  // Función para eliminar producto del carrito
   const eliminarProducto = (id) => {
     const newCarrito = carrito.filter((p) => p._id !== id);
     setCarrito(newCarrito);
   };
 
-  // Calcular total
   const total = carrito.reduce(
     (acc, producto) => acc + producto.precio * producto.cantidad,
     0

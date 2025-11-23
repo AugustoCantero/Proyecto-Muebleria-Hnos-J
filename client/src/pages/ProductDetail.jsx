@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartProvider";
 
 export default function ProductDetail({ carrito, setCarrito, setProductos }) {
-  const { id } = useParams(); // captura el id de la URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ export default function ProductDetail({ carrito, setCarrito, setProductos }) {
     if (!producto) return;
   
     const productoParaCarrito = { ...producto };
-    delete productoParaCarrito.cantidad; // CartProvider maneja cantidad
+    delete productoParaCarrito.cantidad; 
   
     addToCart(productoParaCarrito);
   
