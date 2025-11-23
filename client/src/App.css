@@ -556,6 +556,127 @@ footer {
   z-index: 9999;
 }
 
+/* Overlay negro semi-transparente */
+.carrito-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  z-index: 900;
+}
+
+/* Sidebar del carrito */
+.carrito-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 33vw; /* 1/3 de la pantalla */
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  padding: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Cuando está abierto */
+.carrito-sidebar.open {
+  transform: translateX(0);
+}
+
+
+
+/* Botón de cerrar */
+.cerrar-carrito {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Contenedor principal del carrito */
+#cart-component {
+  position: fixed;
+  bottom: 0;             /* Desde abajo en móvil */
+  left: 0;
+  height: 50%;           /* Ocupa la mitad de la pantalla en móvil */
+  width: 100%;           /* Mobile first: ocupa toda la pantalla */
+  max-width: 100vw;
+  background-color: #fff;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateY(100%); /* Oculto por defecto abajo */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Cuando esté activo */
+#cart-component.active {
+  transform: translateY(0);
+}
+
+/* Producto dentro del carrito */
+#cart-component > div, 
+#cart-component ul, 
+#cart-component li {
+  width: 100%;
+}
+
+/* Elementos internos */
+#cart-component div, 
+#cart-component span, 
+#cart-component button {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Botones de cantidad y eliminar */
+#cart-component button {
+  padding: 0.3rem 0.5rem;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+/* Total */
+#cart-component .total-container {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: right;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5rem;
+}
+
+/* Desktop: 1/3 de pantalla desde la derecha */
+@media (min-width: 768px) {
+  #cart-component {
+    top: 0;
+    bottom: auto;         /* Restablece posición desde arriba */
+    right: 0;
+    left: auto;
+    height: 100vh;
+    width: 33.33%;
+    max-width: 33.33%;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    transform: translateX(100%);
+  }
+
+  #cart-component.active {
+    transform: translateX(0);
+  }
+}
+
+
 .mensaje-carrito {
   background-color: #28a745;
   color: white;
