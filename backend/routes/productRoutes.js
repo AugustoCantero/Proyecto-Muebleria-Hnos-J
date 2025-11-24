@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router(); // ¡Creamos una instancia de Router!
+const { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct }  = require("../controllers/productController.js")
 
-router.get("/", productController.getAllProducts);
-router.get("/:id", productController.getProductById);
-router.post("/", productController.createProduct);
-router.put("/:id", productController.updateProduct);
-router.delete("/:id", productController.deleteProduct);
+router.get("/", getAllProducts);
+router.get("/:id", getProductById);
+router.post("/", createProduct);
+router.put("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
 
 module.exports = router;
