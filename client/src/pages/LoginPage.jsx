@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const initialFormState = {
-  username: "",
   email: "",
   password: "",
 };
@@ -10,33 +9,41 @@ export default function LoginPage() {
   const [dataForm, setDataForm] = useState(initialFormState);
   const [error, setError] = useState(false);
 
+  const [credencialesIncorrectas, setCredencialesIncorrectas] = useState(false);
+
   useEffect(() => {
     setError(false);
+    setCredencialesIncorrectas(false);
   }, [dataForm]);
 
   const login = async (e) => {
     e.preventDefault();
-    if (
-      dataForm.username === "" ||
-      dataForm.email === "" ||
-      dataForm.password === ""
-    ) {
+    if (dataForm.email === "" || dataForm.password === "") {
       setError(true);
       return;
     }
     try {
-      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataForm),
-      });
+      const response = await fetch(
+        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataForm),
+        }
+      );
 
       if (!response.ok) {
+        if (response.status === 400) {
+          setCredencialesIncorrectas(true);
+        }
         throw new Error("Error en el login");
       }
       const result = await response.json();
+      localStorage.setItem("token", result.token);
+      window.location.href = "/perfil";
+
       console.log("Usuario registrado:", result);
     } catch (error) {
       console.error("Error en el login:", error);
@@ -73,6 +80,9 @@ export default function LoginPage() {
 
         {error && (
           <p className="error-text">Por favor completa todos los campos.</p>
+        )}
+        {credencialesIncorrectas && (
+          <p className="error-text">Credenciales incorrectas.</p>
         )}
 
         <button className="login-btn" type="submit">
