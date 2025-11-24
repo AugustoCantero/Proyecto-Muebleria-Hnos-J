@@ -21,7 +21,7 @@ exports.createUser= async (req, res) => {
     const { username, email, password } = req.body;
  
     // 2. Verificamos si el usuario o email ya existen
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    const existingUser = await UserModel.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
       return res.status(400).json({ message: 'El email o nombre de usuario ya está en uso.' });
     }
@@ -31,7 +31,7 @@ exports.createUser= async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
  
     // 4. Creamos el nuevo usuario con la contraseña hasheada
-    const newUser = new User({
+    const newUser = new UserModel({
       username,
       email,
       password: hashedPassword,
