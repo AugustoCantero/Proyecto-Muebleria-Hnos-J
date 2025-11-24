@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { CartContext } from "../contexts/CartProvider";
 
 export default function ProductDetail({ carrito, setCarrito, setProductos }) {
-  const { id } = useParams(); // captura el id de la URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
 
   useEffect(() => {
@@ -25,23 +27,27 @@ export default function ProductDetail({ carrito, setCarrito, setProductos }) {
   }, [id]);
 
   const handleAgregarCarrito = () => {
-    // notificación UI
+    if (!producto) return;
+  
+    const productoParaCarrito = { ...producto };
+    delete productoParaCarrito.cantidad; 
+  
+    addToCart(productoParaCarrito);
+  
+    // Notificación
     const mensajeContainer = document.createElement("div");
     mensajeContainer.classList.add("mensaje-carrito-container");
     document.body.appendChild(mensajeContainer);
-
+  
     const mensaje = document.createElement("div");
     mensaje.classList.add("mensaje-carrito");
     mensaje.textContent = "Producto añadido al carrito";
     mensajeContainer.appendChild(mensaje);
-
+  
     setTimeout(() => {
       mensaje.style.opacity = 0;
       setTimeout(() => mensajeContainer.remove(), 500);
     }, 3000);
-
-    // agregar al carrito
-    setCarrito([...carrito, producto]);
   };
   const [error, setError] = useState("");
   
