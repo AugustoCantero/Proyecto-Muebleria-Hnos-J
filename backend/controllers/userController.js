@@ -1,5 +1,6 @@
 const UserModel = require('../models/UserModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.getUserById = async (req, res) => {
     try {
@@ -14,6 +15,36 @@ exports.getUserById = async (req, res) => {
       }
     };
 
+exports.loginUser = async (req, res) => {
+    try {
+        const usuario = await UserModel.findOne({ email: req.body.email });
+        if (!usuario) {
+            return res.status(400).json({ message: 'Credenciales inválidas' });
+        }
+
+        const esContraseñaValida = await bcrypt.compare(req.body.password, usuario.password);
+        if (!esContraseñaValida) {
+            return res.status(400).json({ message: 'Credenciales inválidas' });
+        }
+
+        const token = jwt.sign(
+            { id: usuario._id, username: usuario.username },
+            process.env.JWT_SECRET,
+            { expiresIn: "1h" }
+        );
+
+        res.status(200).json({ 
+            token,
+            user: {
+                id: usuario._id,
+                username: usuario.username,
+                email: usuario.email
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Error al iniciar sesion" });
+    }
+};
 
 exports.createUser= async (req, res) => {
   try {
