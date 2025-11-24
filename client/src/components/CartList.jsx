@@ -34,9 +34,10 @@ export default function CartList() {
   );
 
   return (
-    <div>
+    <div className='productListInCart'>
       {carrito.map((producto) => (
         <div
+          className='productInCart'
           key={producto._id}
           style={{
             display: "flex",
@@ -49,7 +50,7 @@ export default function CartList() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <button onClick={() => disminuirCantidad(producto._id)}>-</button>
-            <span>Cantidad: {producto.cantidad}</span>
+            <span><span className='cantidadWord'>Cantidad:</span> {producto.cantidad}</span>
             <button onClick={() => aumentarCantidad(producto._id)}>+</button>
           </div>
 

@@ -1,3 +1,97 @@
+import { useEffect, useState } from "react";
+
+const initialFormState = {
+  username: "",
+  email: "",
+  password: "",
+};
+
 export default function RegisterPage() {
-  return <h1>Register Page</h1>;
+  const [dataForm, setDataForm] = useState(initialFormState);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setError(false);
+  }, [dataForm]);
+
+  const register = async (e) => {
+    e.preventDefault();
+    if (
+      dataForm.username === "" ||
+      dataForm.email === "" ||
+      dataForm.password === ""
+    ) {
+      setError(true);
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:4000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataForm),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error en el registro");
+      }
+      const result = await response.json();
+      console.log("Usuario registrado:", result);
+    } catch (error) {
+      console.error("Error en el registro:", error);
+    }
+  };
+
+  return (
+    <section className="register-page">
+      <h1 className="register-title">Crear cuenta</h1>
+
+      <form className="register-form" onSubmit={register}>
+        <div className="form-group">
+          <label>Nombre de usuario</label>
+          <input
+            type="text"
+            placeholder="Tu nombre"
+            value={dataForm.username}
+            onChange={(e) =>
+              setDataForm({ ...dataForm, username: e.target.value })
+            }
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="ejemplo@mail.com"
+            value={dataForm.email}
+            onChange={(e) =>
+              setDataForm({ ...dataForm, email: e.target.value })
+            }
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Contraseña</label>
+          <input
+            type="password"
+            placeholder="******"
+            value={dataForm.password}
+            onChange={(e) =>
+              setDataForm({ ...dataForm, password: e.target.value })
+            }
+          />
+        </div>
+
+        {error && (
+          <p className="error-text">Por favor completa todos los campos.</p>
+        )}
+
+        <button className="register-btn" type="submit">
+          Crear cuenta
+        </button>
+      </form>
+    </section>
+  );
 }
