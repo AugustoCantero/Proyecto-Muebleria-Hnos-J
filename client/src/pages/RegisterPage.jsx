@@ -25,7 +25,7 @@ export default function RegisterPage() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:4000/api/auth/register", {
+      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
