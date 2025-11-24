@@ -686,6 +686,127 @@ footer {
   border-radius: 4px;
 }
 
+/* PERFIL */
+/* ------------------------------
+   Mobile First Profile Page
+--------------------------------*/
+
+.profile-page {
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+  background: var(--color-alabastro);
+  min-height: 100vh;
+  color: #2b2b2b;
+}
+
+.profile-page h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-siena);
+  margin-bottom: 10px;
+}
+
+.orders-title {
+  font-size: 1.4rem;
+  color: var(--color-siena);
+  font-weight: 600;
+  margin: 25px 0 15px;
+}
+
+/* ------------------------------
+   Empty message
+--------------------------------*/
+.no-orders-message {
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  color: #444;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* ------------------------------
+   ORDER CARD (mobile)
+--------------------------------*/
+
+.order-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.09);
+  border-left: 6px solid var(--color-verdeSalvia);
+  transition: transform 0.15s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+}
+
+.order-card span {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.order-card .label {
+  font-weight: 600;
+  color: var(--color-siena);
+}
+
+.order-card .value {
+  color: #444;
+}
+
+/* ------------------------------
+   Desktop Table (progressive enhancement)
+--------------------------------*/
+
+@media (min-width: 700px) {
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .orders-table-head {
+    background: var(--color-siena);
+    color: white;
+  }
+
+  .orders-table-row {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+  }
+
+  .orders-table-row:hover td {
+    background: var(--color-alabastro);
+  }
+
+  /* Ocultar cards en desktop */
+  .order-card {
+    display: none;
+  }
+}
+
+/* En desktop, mostrar tabla / en mobile, ocultarla */
+@media (max-width: 699px) {
+  .orders-table {
+    display: none;
+  }
+}
+
+
 @media (min-width: 768px) {
   #producto-container {
     flex-direction: row;
