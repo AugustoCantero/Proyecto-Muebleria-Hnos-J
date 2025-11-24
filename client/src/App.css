@@ -732,6 +732,97 @@ footer {
   pointer-events: auto;
   margin-top: 10px;
 }
+/* ORDER DETAIL */
+
+#table-wrapper {
+  padding: 1.2rem;
+  max-width: 1000px; /* Limita el ancho máximo para desktop */
+  margin: 0 auto; /* Centra horizontalmente */
+}
+
+#order-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  overflow-x: auto; /* En caso extremo de contenido muy largo */
+}
+
+/* TABLA */
+#order-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  table-layout: fixed; /* Evita que la tabla se desborde */
+  word-wrap: break-word; /* Que el texto largo haga wrap */
+}
+
+#order-table thead th {
+  background: #f0f0f0;
+  padding: 12px;
+  font-weight: 600;
+  text-align: left;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* FILAS */
+#order-table tbody tr {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#order-table tbody td {
+  padding: 14px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* BORDES REDONDEADOS POR FILA */
+#order-table tbody tr td:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+#order-table tbody tr td:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* TOTAL */
+#order-total {
+  margin-top: 1rem;
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (min-width: 480px) {
+  #table-wrapper {
+    padding: 1.5rem;
+  }
+
+  #order-table thead th,
+  #order-table tbody td {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #table-wrapper {
+    padding: 2rem;
+  }
+
+  #order-card {
+    padding: 2rem;
+  }
+
+  #order-table thead th,
+  #order-table tbody td {
+    font-size: 1rem;
+  }
+}
+
 
 /* CONTACTO */
 #presentacion-formulario {
