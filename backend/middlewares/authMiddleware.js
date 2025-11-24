@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
     const token = authHeader.split(' ')[1]; // Extraemos el token
  
     // 2. Verificamos el token
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedPayload) => {
+    jwt.verify(token, process.env.SECRET_KEY_JWT, (err, decodedPayload) => {
       if (err) {
         // Si el token no es válido (expirado, manipulado)
         return res.status(403).json({ message: 'Token inválido o expirado' }); // 403 Forbidden
