@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useNavigate from "../hooks/useNavigate";
+import { useNavigate } from "react-router-dom";
 
 const initialFormState = {
   username: "",
