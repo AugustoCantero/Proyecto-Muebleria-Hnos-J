@@ -108,7 +108,11 @@ export default function CartList() {
       <div style={{ marginTop: "1rem", textAlign: "center" }}>
         <button
           onClick={() => {
-            createOrder();
+            if (!currentUser) {
+              navigate("/login", { replace: true });
+            } else {
+              createOrder();
+            }
           }}
           className="btn"
         >
