@@ -29,7 +29,7 @@ export default function LoginPage() {
     }
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/login",
+        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/users/login",
         {
           method: "POST",
           headers: {
