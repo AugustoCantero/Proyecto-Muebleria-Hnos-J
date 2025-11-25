@@ -47,7 +47,7 @@ export default function LoginPage() {
       }
       const result = await response.json();
       login(result.token);
-      navigate("/perfil", { replace: true });
+      navigate("/admin/perfil", { replace: true });
     } catch (error) {
       console.error("Error en el login:", error);
     }

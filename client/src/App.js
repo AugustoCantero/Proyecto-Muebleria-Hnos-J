@@ -18,8 +18,6 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrderDetail from "./pages/OrderDetail";
 
-import { CartProvider } from "./contexts/CartProvider";
-
 import { AuthContext } from "./contexts/AuthContext";
 
 export default function App() {
@@ -73,76 +71,71 @@ export default function App() {
   }, []);
 
   return (
-    <CartProvider>
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <section className="hero">
-                    <h1 className="textoSiena">Bienvenido a Hermanos Jota</h1>
-                    <p>Artesanía en madera con historia y diseño moderno.</p>
-                  </section>
+    <Router>
+      <Header />
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <section className="hero">
+                  <h1 className="textoSiena">Bienvenido a Hermanos Jota</h1>
+                  <p>Artesanía en madera con historia y diseño moderno.</p>
+                </section>
 
-                  <section className="productos-destacados-container">
-                    <h1>PRODUCTOS DESTACADOS</h1>
-                    <div className="grid" id="productos-destacados">
-                      {productos.slice(0, 4).map((prod) => (
-                        <ProductCard key={prod._id} producto={prod} />
-                      ))}
-                    </div>
-                  </section>
-                </>
-              }
-            />
+                <section className="productos-destacados-container">
+                  <h1>PRODUCTOS DESTACADOS</h1>
+                  <div className="grid" id="productos-destacados">
+                    {productos.slice(0, 4).map((prod) => (
+                      <ProductCard key={prod._id} producto={prod} />
+                    ))}
+                  </div>
+                </section>
+              </>
+            }
+          />
 
-            <Route
-              path="/productos"
-              element={
-                <ProductList
-                  loading={loading}
-                  error={error}
-                  productos={productos}
-                />
-              }
-            />
-
-            <Route path="/contacto" element={<ContactForm />} />
-            <Route
-              path="/productos/:id"
-              element={
-                <ProductDetail
-                  setProductos={setProductos}
-                  carrito={carrito}
-                  setCarrito={setCarrito}
-                />
-              }
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/" element={<ProtectedRoutes />}>
-              <Route
-                path="crear-producto"
-                element={<CrearProducto setProductos={setProductos} />}
+          <Route
+            path="/productos"
+            element={
+              <ProductList
+                loading={loading}
+                error={error}
+                productos={productos}
               />
-              <Route
-                path="editar-producto/:id"
-                element={<EditarProducto />}
+            }
+          />
+
+          <Route path="/contacto" element={<ContactForm />} />
+          <Route
+            path="/productos/:id"
+            element={
+              <ProductDetail
+                setProductos={setProductos}
+                carrito={carrito}
+                setCarrito={setCarrito}
               />
-              <Route path="perfil" element={<ProfilePage />} />
-              <Route path="pedidos/:id" element={<OrderDetail />} />
-            </Route>
-          </Routes>
-        </main>
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<ProtectedRoutes />}>
+            <Route
+              path="crear-producto"
+              element={<CrearProducto setProductos={setProductos} />}
+            />
+            <Route path="editar-producto/:id" element={<EditarProducto />} />
+            <Route path="perfil" element={<ProfilePage />} />
+            <Route path="pedidos/:id" element={<OrderDetail />} />
+          </Route>
+        </Routes>
+      </main>
 
-        {/* Icono del carrito */}
-        <Carrito carrito={carrito} />
+      {/* Icono del carrito */}
+      <Carrito carrito={carrito} />
 
-        <Footer />
-      </Router>
-    </CartProvider>
+      <Footer />
+    </Router>
   );
 }

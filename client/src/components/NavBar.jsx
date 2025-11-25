@@ -22,7 +22,7 @@ export default function NavBar() {
             <Link to={"/"} onClick={logout}>
               Log Out
             </Link>
-            <Link to="/perfil">Perfil</Link>
+            <Link to="/admin/perfil">Perfil</Link>
           </>
         )}
       </div>

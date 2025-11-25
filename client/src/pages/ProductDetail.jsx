@@ -26,7 +26,7 @@ export default function ProductDetail({ carrito, setCarrito, setProductos }) {
       });
   }, [id]);
 
-  const handleAgregarCarrito = () => {
+  const handleAgregarCarrito = async () => {
     if (!producto) return;
   
     const productoParaCarrito = { ...producto };

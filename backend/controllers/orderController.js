@@ -3,6 +3,7 @@ const OrderModel = require("../models/OrderModel");
 exports.getAllOrders = async (req, res) => {
   try {
     const orders = await OrderModel.find({ userId: req.user.id });
+    console.log('Orders for user:', req.user.id, orders);
     res.json(orders);
   } catch (error) {
     console.error("Error al obtener órdenes:", error);

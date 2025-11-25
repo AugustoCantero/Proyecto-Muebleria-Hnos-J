@@ -16,7 +16,9 @@ export default function Carrito() {
       </div>
 
       {/* Overlay */}
-      {open && <div className="carrito-overlay" onClick={() => setOpen(false)}></div>}
+      {open && (
+        <div className="carrito-overlay" onClick={() => setOpen(false)}></div>
+      )}
 
       {/* Sidebar */}
       <div className={`carrito-sidebar ${open ? "open" : ""}`}>
@@ -25,7 +27,7 @@ export default function Carrito() {
         </button>
         <CartList />
       </div>
+
     </>
   );
 }
-

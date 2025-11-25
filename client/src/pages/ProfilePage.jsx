@@ -6,13 +6,8 @@ import OrderCard from "../components/OrderCard";
 export default function ProfilePage() {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
-  console.log("Current User:", currentUser);
 
   const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    fetchOrders();
-  }, []);
 
   const fetchOrders = async () => {
     try {
@@ -30,9 +25,12 @@ export default function ProfilePage() {
       setOrders(data);
     } catch (error) {
       console.error(error);
+      navigate("/login");
     }
   };
-
+  useEffect(() => {
+    fetchOrders();
+  }, []);
   if (!currentUser) return <p>Cargando usuario...</p>;
 
   return (
@@ -46,6 +44,7 @@ export default function ProfilePage() {
           </p>
         ) : (
           <div>
+            {/* DESKTOP  */}
             <table className="orders-table">
               <thead className="orders-table-head">
                 <tr className="orders-table-row">
@@ -57,7 +56,7 @@ export default function ProfilePage() {
               <tbody className="orders-table-body">
                 {orders.map((order) => (
                   <tr
-                    onClick={() => navigate(`/pedidos/${order._id}`)}
+                    onClick={() => navigate(`/admin/pedidos/${order._id}`)}
                     key={order._id}
                     className="orders-table-row"
                   >
@@ -68,6 +67,7 @@ export default function ProfilePage() {
                 ))}
               </tbody>
             </table>
+            {/* MOBILE  */}
             {orders.map((order) => (
               <OrderCard key={order._id} order={order} />
             ))}

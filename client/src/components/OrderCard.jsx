@@ -4,9 +4,8 @@ export default function OrderCard({ order }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/pedidos/${order._id}`)}
+      onClick={() => navigate(`/admin/pedidos/${order._id}`)}
       className="order-card"
-      key={order._id}
     >
       <span className="label">Order ID:</span>
       <span className="value">{order._id}</span>
