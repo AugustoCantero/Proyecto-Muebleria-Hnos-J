@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useNavigate from "../hooks/useNavigate";
 
 const initialFormState = {
   username: "",
@@ -7,6 +8,7 @@ const initialFormState = {
 };
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [dataForm, setDataForm] = useState(initialFormState);
   const [error, setError] = useState(false);
 
