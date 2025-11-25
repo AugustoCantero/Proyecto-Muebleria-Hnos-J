@@ -38,6 +38,7 @@ export default function ContactForm() {
 
       setError("Mensaje enviado con éxito. ¡Gracias por contactarnos!");
       console.log("Datos del formulario:", JSON.stringify(dataForm));
+      setDataForm({ name: "", email: "", message: "" });
     } catch (error) {
       setError(error.message);
     }
