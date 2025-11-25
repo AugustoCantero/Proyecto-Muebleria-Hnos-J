@@ -1,7 +1,11 @@
 import ProductCard from "../components/ProductCard";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductList({ productos, loading, error }) {
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [valueFilter, setValueFilter] = useState("");
 
   function stringCleaner(palabras) {
