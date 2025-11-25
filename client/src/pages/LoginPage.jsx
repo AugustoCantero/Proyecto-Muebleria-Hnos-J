@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 const initialFormState = {
   email: "",
   password: "",
@@ -10,13 +12,16 @@ export default function LoginPage() {
   const [error, setError] = useState(false);
 
   const [credencialesIncorrectas, setCredencialesIncorrectas] = useState(false);
+  const { login } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     setError(false);
     setCredencialesIncorrectas(false);
   }, [dataForm]);
 
-  const login = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (dataForm.email === "" || dataForm.password === "") {
       setError(true);
@@ -24,7 +29,7 @@ export default function LoginPage() {
     }
     try {
       const response = await fetch(
-        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/users/login",
+        "http://localhost:8080/api/users/login",
         {
           method: "POST",
           headers: {
@@ -41,10 +46,8 @@ export default function LoginPage() {
         throw new Error("Error en el login");
       }
       const result = await response.json();
-      localStorage.setItem("token", result.token);
-      window.location.href = "/perfil";
-
-      console.log("Usuario registrado:", result);
+      login(result.token);
+      navigate("/perfil", { replace: true });
     } catch (error) {
       console.error("Error en el login:", error);
     }
@@ -53,7 +56,7 @@ export default function LoginPage() {
     <section className="login-page">
       <h1 className="login-title">Iniciar Sesión</h1>
 
-      <form className="login-form" onSubmit={login}>
+      <form className="login-form" onSubmit={handleLogin}>
         <div className="form-group">
           <label>Email</label>
           <input

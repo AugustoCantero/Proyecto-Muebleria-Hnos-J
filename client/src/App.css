@@ -47,6 +47,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
+.userOptionsContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 #main-index {
   margin: 0;
 }
@@ -769,7 +776,7 @@ footer {
 /* FILAS */
 #order-table tbody tr {
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 #order-table tbody td {
@@ -822,7 +829,6 @@ footer {
     font-size: 1rem;
   }
 }
-
 
 /* CONTACTO */
 #presentacion-formulario {
@@ -1187,6 +1193,11 @@ footer {
 }
 
 @media (min-width: 768px) {
+  .userOptionsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
   .crear-producto .grid {
     grid-template-columns: 1fr 1fr;
   }

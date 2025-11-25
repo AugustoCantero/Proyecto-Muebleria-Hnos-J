@@ -1,11 +1,13 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrito from "./components/Carrito";
 import ProductCard from "./components/ProductCard";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
+
 import ProductDetail from "./pages/ProductDetail";
 import ProductList from "./pages/ProductList";
 import ContactForm from "./pages/ContactForm";
@@ -18,14 +20,23 @@ import OrderDetail from "./pages/OrderDetail";
 
 import { CartProvider } from "./contexts/CartProvider";
 
+import { AuthContext } from "./contexts/AuthContext";
+
 export default function App() {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { login } = useContext(AuthContext);
+
+  // Verificar si el usuario está logueado al iniciar
 
   // Carga el carrito desde localStorage al iniciar
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      login(token);
+    }
     const saved = localStorage.getItem("carrito");
     if (saved) {
       try {
@@ -110,15 +121,20 @@ export default function App() {
                 />
               }
             />
-            <Route
-              path="/admin/crear-producto"
-              element={<CrearProducto setProductos={setProductos} />}
-            />
-            <Route path="/admin/editar-producto/:id" element={<EditarProducto />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/perfil" element={<ProfilePage />} />
-            <Route path="/pedidos/:id" element={<OrderDetail />} />
+            <Route path="/" element={<ProtectedRoutes />}>
+              <Route
+                path="crear-producto"
+                element={<CrearProducto setProductos={setProductos} />}
+              />
+              <Route
+                path="editar-producto/:id"
+                element={<EditarProducto />}
+              />
+              <Route path="perfil" element={<ProfilePage />} />
+              <Route path="pedidos/:id" element={<OrderDetail />} />
+            </Route>
           </Routes>
         </main>
 
