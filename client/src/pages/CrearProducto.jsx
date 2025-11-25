@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import opcionesExtras from "../data/opcionesExtras";
 
-export default function CrearProducto({setProductos}) {
+export default function CrearProducto({ setProductos }) {
   const [formData, setFormData] = useState({
     nombre: "",
     precio: "",
@@ -51,7 +51,10 @@ export default function CrearProducto({setProductos}) {
         "https://proyecto-muebleria-hnos-j-1.onrender.com/api/products",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
           body: JSON.stringify(dataToSend),
         }
       );

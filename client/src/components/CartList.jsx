@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../contexts/CartProvider";
 import { AuthContext } from "../contexts/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function CartList() {
   const navigate = useNavigate();
@@ -41,20 +41,27 @@ export default function CartList() {
         quantity: producto.cantidad,
       }));
 
-      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({userId: currentUser.id, products: orderItems, totalAmount: total}),
-      });
+      const response = await fetch(
+        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            userId: currentUser.id,
+            products: orderItems,
+            totalAmount: total,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("Error al crear la orden");
       }
       const data = await response.json();
       console.log("Orden creada con éxito:", data);
-      navigate(`/pedidos/${data.order._id}`, { replace: true });
+      navigate(`admin/pedidos/${data.order._id}`, { replace: true });
       setCarrito([]); // Vaciar el carrito después de crear la orden
     } catch (error) {
       console.error("Error al crear la orden:", error);
@@ -99,9 +106,12 @@ export default function CartList() {
         Total: ${total}
       </div>
       <div style={{ marginTop: "1rem", textAlign: "center" }}>
-        <button onClick={() => {createOrder()
-
-        }}className="create-order-button">
+        <button
+          onClick={() => {
+            createOrder();
+          }}
+          className="btn"
+        >
           Crear Pedido
         </button>
       </div>

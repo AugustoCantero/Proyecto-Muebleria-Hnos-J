@@ -20,7 +20,9 @@ export default function EditarProducto() {
 
         const atributosExtras = Object.keys(data).filter(
           (key) =>
-            !["nombre", "precio", "stock", "medidas", "_id", "__v"].includes(key)
+            !["nombre", "precio", "stock", "medidas", "_id", "__v"].includes(
+              key
+            )
         );
 
         setExtras(atributosExtras);
@@ -69,7 +71,10 @@ export default function EditarProducto() {
         `https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${id}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
           body: JSON.stringify(dataToSend),
         }
       );

@@ -46,7 +46,7 @@ export default function ProductList({ productos, loading, error }) {
       </form>
 
       {currentUser?.role === "admin" && (
-        <button onClick={() => navigate(`/admin/crear-producto`)}>
+        <button className='btn' onClick={() => navigate(`/admin/crear-producto`)}>
           Crear nuevo producto
         </button>
       )}

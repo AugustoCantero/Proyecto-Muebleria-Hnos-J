@@ -361,7 +361,7 @@ footer {
 
 .product-buy {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 32px;
   margin-top: 20px;
@@ -604,6 +604,23 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.btn {
+  background-color: #d6996f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  justify-self: center;
+}
+
+.btn button:hover {
+  background-color: #c17a57;
+  transform: translateY(-2px);
 }
 
 /* FILA TIPO TABLA */

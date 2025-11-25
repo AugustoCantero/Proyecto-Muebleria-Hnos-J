@@ -56,7 +56,13 @@ export default function ProductDetail({ setProductos }) {
     try {
       const response = await fetch(
         `https://proyecto-muebleria-hnos-j-1.onrender.com/api/products/${producto._id}`,
-        { method: "DELETE" }
+
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
 
       if (!response.ok) {
@@ -124,7 +130,9 @@ export default function ProductDetail({ setProductos }) {
           <button onClick={handleBorrarProducto}>Borrar producto</button>
         )}
         {currentUser?.role === "admin" && (
-          <button onClick={() => navigate(`/admin/editar-producto/${producto._id}`)}>
+          <button
+            onClick={() => navigate(`/admin/editar-producto/${producto._id}`)}
+          >
             Editar producto
           </button>
         )}
