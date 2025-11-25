@@ -37,6 +37,7 @@ export default function RegisterPage() {
         throw new Error("Error en el registro");
       }
       const result = await response.json();
+      navigate("/login");
       console.log("Usuario registrado:", result);
     } catch (error) {
       console.error("Error en el registro:", error);
