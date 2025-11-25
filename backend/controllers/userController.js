@@ -2,6 +2,10 @@ const UserModel = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+exports.getUserProfile = (req, res) => {
+    res.json({ message: `Bienvenido al perfil, ${req.user.username}` });
+};
+
 exports.getUserById = async (req, res) => {
     try {
         const usuario = await UserModel.findById(req.params.id);
