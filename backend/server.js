@@ -19,10 +19,14 @@ connectDB();
 
 // Middleware para parsear JSON. ¡Crucial para peticiones POST/PUT!
 // Le dice a Express que si llega un cuerpo de petición en formato JSON, lo convierta en un objeto JavaScript.
-app.use(express.json());
 
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cors());
+
+// Servimos archivos estáticos desde las carpetas "assets" y "uploads"
 app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // --- RUTAS ---
 app.use("/api/products", productRoutes);

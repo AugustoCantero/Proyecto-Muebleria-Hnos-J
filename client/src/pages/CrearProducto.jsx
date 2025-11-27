@@ -9,6 +9,7 @@ export default function CrearProducto({ setProductos }) {
     precio: "",
     stock: "",
     medidas: "",
+    img: null
   });
 
   const [extras, setExtras] = useState([]);
@@ -108,7 +109,20 @@ export default function CrearProducto({ setProductos }) {
           value={formData.medidas}
           required
         />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
 
+            reader.onloadend = () => {
+              setFormData({ ...formData, img: reader.result }); // <-- Base64
+            };
+
+            reader.readAsDataURL(file);
+          }}
+        />
         {/* Extras */}
         <div className="extras">
           {extras.map((extra, index) => {

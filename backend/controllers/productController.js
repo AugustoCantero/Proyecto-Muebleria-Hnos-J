@@ -24,8 +24,29 @@ exports.getProductById = async (req, res) => {
 };
 
 exports.createProduct = async (req, res) => {
-  const nuevoProducto = req.body;
   try {
+    const { img, ...data } = req.body;
+
+    let imagePath = null;
+
+    if (img) {
+      const matches = img.match(/^data:(.+);base64,(.+)$/);
+
+      const ext = matches[1].split("/")[1];
+      const base64Data = matches[2];
+      const buffer = Buffer.from(base64Data, "base64");
+
+      const filename = Date.now() + "." + ext;
+      const filePath = path.join(__dirname, "../uploads", filename);
+
+      fs.writeFileSync(filePath, buffer);
+
+      imagePath = `/uploads/${filename}`;
+    }
+    const nuevoProducto = {
+      ...data,
+      img: imagePath,
+    };
     const productoCreado = await ProductModel.create(nuevoProducto);
     res
       .status(201)
