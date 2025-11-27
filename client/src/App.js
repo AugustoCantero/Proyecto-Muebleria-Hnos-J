@@ -43,6 +43,7 @@ export default function App() {
         console.error("Error al parsear carrito", e);
       }
     }
+    setLoading(false);
   }, []);
 
   // Guarda el carrito en localStorage cada vez que cambie
@@ -70,7 +71,9 @@ export default function App() {
     fetchProducts();
   }, []);
 
-  return (
+  return loading ? (
+    <p>Cargando...</p>
+  ) : (
     <Router>
       <Header />
       <main>
