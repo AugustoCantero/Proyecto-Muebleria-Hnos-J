@@ -51,7 +51,7 @@ exports.createProduct = async (req, res) => {
 
       fs.writeFileSync(filePath, buffer);
 
-      imagePath = `/uploads/${filename}`;
+      imagePath = `uploads/${filename}`;
     }
 
     const nuevoProducto = {
