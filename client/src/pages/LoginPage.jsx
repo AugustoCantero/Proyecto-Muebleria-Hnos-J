@@ -47,16 +47,16 @@ export default function LoginPage() {
       }
       const result = await response.json();
       login(result.token);
-      navigate("/admin/perfil", { replace: true });
+      navigate("/user/perfil", { replace: true });
     } catch (error) {
       console.error("Error en el login:", error);
     }
   };
   return (
-    <section className="login-page">
-      <h1 className="login-title">Iniciar Sesión</h1>
+    <section className="auth-page">
+      <h1 className="auth-title">Iniciar Sesión</h1>
 
-      <form className="login-form" onSubmit={handleLogin}>
+      <form className="auth-form" onSubmit={handleLogin}>
         <div className="form-group">
           <label>Email</label>
           <input
@@ -88,7 +88,7 @@ export default function LoginPage() {
           <p className="error-text">Credenciales incorrectas.</p>
         )}
 
-        <button className="login-btn" type="submit">
+        <button className="auth-btn" type="submit">
           Iniciar sesión
         </button>
       </form>

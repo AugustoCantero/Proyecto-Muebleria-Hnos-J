@@ -47,10 +47,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="register-page">
-      <h1 className="register-title">Crear cuenta</h1>
+    <section className="auth-page">
+      <h1 className="auth-title">Crear cuenta</h1>
 
-      <form className="register-form" onSubmit={register}>
+      <form className="auth-form" onSubmit={register}>
         <div className="form-group">
           <label>Nombre de usuario</label>
           <input
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           <p className="error-text">Por favor completa todos los campos.</p>
         )}
 
-        <button className="register-btn" type="submit">
+        <button className="auth-btn" type="submit">
           Crear cuenta
         </button>
       </form>

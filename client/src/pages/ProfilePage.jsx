@@ -56,7 +56,7 @@ export default function ProfilePage() {
               <tbody className="orders-table-body">
                 {orders.map((order) => (
                   <tr
-                    onClick={() => navigate(`/admin/pedidos/${order._id}`)}
+                    onClick={() => navigate(`/user/pedidos/${order._id}`)}
                     key={order._id}
                     className="orders-table-row"
                   >

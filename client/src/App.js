@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Carrito from "./components/Carrito";
 import ProductCard from "./components/ProductCard";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
+import ProtectedAdminRoutes from "./pages/ProtectedAdminRoutes";
 
 import ProductDetail from "./pages/ProductDetail";
 import ProductList from "./pages/ProductList";
@@ -113,22 +114,18 @@ export default function App() {
           <Route path="/contacto" element={<ContactForm />} />
           <Route
             path="/productos/:id"
-            element={
-              <ProductDetail
-                setProductos={setProductos}
-                carrito={carrito}
-                setCarrito={setCarrito}
-              />
-            }
+            element={<ProductDetail setProductos={setProductos} />}
           />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/admin" element={<ProtectedRoutes />}>
+          <Route path="/admin" element={<ProtectedAdminRoutes />}>
             <Route
               path="crear-producto"
               element={<CrearProducto setProductos={setProductos} />}
             />
             <Route path="editar-producto/:id" element={<EditarProducto />} />
+          </Route>
+          <Route path="/user" element={<ProtectedRoutes />}>
             <Route path="perfil" element={<ProfilePage />} />
             <Route path="pedidos/:id" element={<OrderDetail />} />
           </Route>

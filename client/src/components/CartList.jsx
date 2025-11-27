@@ -61,7 +61,7 @@ export default function CartList() {
       }
       const data = await response.json();
       console.log("Orden creada con éxito:", data);
-      navigate(`admin/pedidos/${data.order._id}`, { replace: true });
+      navigate(`user/pedidos/${data.order._id}`, { replace: true });
       setCarrito([]); // Vaciar el carrito después de crear la orden
     } catch (error) {
       console.error("Error al crear la orden:", error);

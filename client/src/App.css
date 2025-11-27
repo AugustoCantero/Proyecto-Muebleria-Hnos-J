@@ -973,7 +973,7 @@ footer {
 --------------------------------*/
 
 .profile-page {
-  padding: 20px;
+  padding: 16px 32px;
   font-family: system-ui, sans-serif;
   background: var(--color-alabastro);
   min-height: 100vh;
@@ -1039,10 +1039,10 @@ footer {
   color: #444;
 }
 /* =====================
-      REGISTER
+      Auth
 ===================== */
 
-.register-page {
+.auth-page {
   padding: 1.5rem;
   background: var(--color-alabastro);
   min-height: 100vh;
@@ -1051,28 +1051,29 @@ footer {
   align-items: center;
 }
 
-.register-title {
+.auth-title {
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-siena);
   margin-bottom: 1rem;
 }
 
-.register-form {
+.auth-form {
   width: 90%;
-  background: white;
   padding: 1.5rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-radius: 1rem;
 }
 
 .form-group {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
@@ -1084,7 +1085,6 @@ footer {
 }
 
 .form-group input {
-  width: 90%;
   padding: 0.6rem 0.8rem;
   border-radius: var(--radius);
   border: 1px solid #ccc;
@@ -1097,7 +1097,7 @@ footer {
   border-color: var(--color-verdeSalvia);
 }
 
-.register-btn {
+.auth-btn {
   padding: 0.8rem;
   background: var(--color-verdeSalvia);
   color: white;
@@ -1106,9 +1106,10 @@ footer {
   border-radius: var(--radius);
   cursor: pointer;
   transition: background 0.2s ease;
+  border-radius: .6rem;
 }
 
-.register-btn:hover {
+.auth-btn:hover {
   background: var(--color-siena);
 }
 
@@ -1116,54 +1117,6 @@ footer {
   color: var(--color-rosa);
   font-size: 0.9rem;
   text-align: center;
-}
-
-/* =====================
-        LOGIN
-===================== */
-
-.login-page {
-  padding: 1.5rem;
-  background: var(--color-alabastro);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.login-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-siena);
-  margin-bottom: 1rem;
-}
-
-.login-form {
-  width: 90%;
-  background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-radius: 1rem;
-}
-
-/* BOTÓN LOGIN */
-.login-btn {
-  padding: 0.8rem;
-  background: var(--color-verdeSalvia);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.login-btn:hover {
-  background: var(--color-siena);
 }
 
 @media (min-width: 700px) {
@@ -1300,26 +1253,16 @@ footer {
     display: inline;
   }
 
-  .register-page {
+  .auth-page {
     padding: 3rem;
   }
 
-  .register-title {
+  .auth-title {
     font-size: 2.4rem;
   }
 
-  .register-form {
-    padding: 2rem;
-  }
-  .login-page {
-    padding: 3rem;
-  }
-
-  .login-title {
-    font-size: 2.4rem;
-  }
-
-  .login-form {
+  .auth-form {
+    width: 30%;
     padding: 2rem;
   }
 }

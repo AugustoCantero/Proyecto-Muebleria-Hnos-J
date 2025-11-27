@@ -4,7 +4,7 @@ export default function OrderCard({ order }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/admin/pedidos/${order._id}`)}
+      onClick={() => navigate(`/user/pedidos/${order._id}`)}
       className="order-card"
     >
       <span className="label">Order ID:</span>
