@@ -33,6 +33,10 @@ Tanto el frontend como el backend ya estan corriendo en un servidor. (vercel y r
 
 */api/products/:id* -> Datos de un producto en especifico en formato JSON
 
+*/api/orders* -> Lista de ordenes en formato JSON
+
+*/api/orders/:id* -> Datos de una orden en especifico en formato JSON
+
 */api/contacts* -> Lista de consultas que se hagan en el formulario de contacto
 
 # Arquitectura y Desiciones tomadas
@@ -58,12 +62,16 @@ Usamos variables de entorno que contiene la URI de la bbdd en atlas
 
 # Decisiones Tomadas
 - El componente del carrito lo dejamos como un estilo *absolute* para acompañe el scroll. (posible cambios en el futuro)
-- De momento, en /admin/crear-producto solo se pueden seleccionar atributos ya existentes. (proximamente se podran crean nuevos)
+- De momento, en /admin/crear-producto y /editar-producto solo se pueden seleccionar atributos ya existentes.
 
 # Funcionalidad
+* Login
+* Registro
 * Ver productos
 * Agregar productos al carrito
 * Realizar consultas
+* Ver perfil del usuario
+* Ver Pedidos realizados
 * Crear productos (admin)
 * Editar productos (admin)
 * Eliminar productos (admin)
@@ -79,6 +87,19 @@ Seccion donde muestra más detalladamente el producto que elegiste en la anterio
 
 ## Contacto
 Donde podes dejar reseñas/preguntas sobre nuestros productos.
+
+## Perfil
+Seccion donde poder ver los pedidos que realizaste con el precio final y la fecha.
+
+## Pedido
+Seccion donde muestra más detalladamente el pedido que elegiste en la anterior lista, mostrando los productos comprados, la cantidad y precio de c/u, precio total y Fecha de realización.
+
+## Usuario
+### Registro
+Pagian donde creas tu cuenta en el web
+### Login 
+Pagina donde inicias sesion a tu cuenta 
+
 
 ## Del lado del Admin
 ### Crear-Producto
@@ -99,10 +120,15 @@ Información general sobre la empresa, como dirección, horarios y contacto.tos 
 
 ## Carrito
 "Boton flotante" donde te dice la cantidad de productos que tenes en tu carrito que proximamente te llevara a tu carrito.
-(Funcionando con el boton de /producto - usando localStorage) 
+
+## CartList
+Lista de productos agregados al carrito desde la pagina de los mismos (ProductDetail) mostrando su cantidad y precio final (precio del producto * cantidad) y abajo del todo el precio total del carrito. A su vez en el mismo carrito se pueden agregar/disminuir las cantidades o eliminar un producto de la lista.
 
 ## ProductCard
-Informacion resumida de un producto junto a su imagen, que te redirige a la pagina del mismo.
+Informacion resumida de un producto, que te redirige a la pagina del mismo.
+
+## OrderCard
+Informacion resumida de un pedido, que te redirige a la pagina del mismo.
 
 ---
 
@@ -121,4 +147,8 @@ Informacion resumida de un producto junto a su imagen, que te redirige a la pagi
 * Mongoose
 * cors
 * dotenv
+* JWT
+* JWT decode
+* useContext
+* AuthContext
 
