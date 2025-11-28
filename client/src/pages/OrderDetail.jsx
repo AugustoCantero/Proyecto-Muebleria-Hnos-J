@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { apiFetch } from "../utils/api";
 
 export default function OrderDetail() {
   const { id } = useParams();
   const [pedido, setPedido] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    apiFetch(`/api/orders/${id}`,
+  useEffect(() => {fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/products",   
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

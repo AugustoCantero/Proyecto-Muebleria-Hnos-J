@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { apiFetch } from "../utils/api";
 import { CartContext } from "../contexts/CartProvider";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -44,7 +43,7 @@ export default function CartList() {
         price: producto.precio,
       }));
 
-      const response = await apiFetch("/api/orders", {
+      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
