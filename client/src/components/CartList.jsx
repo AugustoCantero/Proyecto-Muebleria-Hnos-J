@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { apiFetch } from "../utils/api";
 import { CartContext } from "../contexts/CartProvider";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -38,24 +39,23 @@ export default function CartList() {
     try {
       const orderItems = carrito.map((producto) => ({
         productId: producto._id,
+        name: producto.nombre,
         quantity: producto.cantidad,
+        price: producto.precio,
       }));
 
-      const response = await fetch(
-        "https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            userId: currentUser.id,
-            products: orderItems,
-            totalAmount: total,
-          }),
-        }
-      );
+      const response = await apiFetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          products: orderItems,
+          totalAmount: total,
+        }),
+      });
       if (!response.ok) {
         throw new Error("Error al crear la orden");
       }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { apiFetch } from "../utils/api";
 
 export default function OrderDetail() {
   const { id } = useParams();
@@ -7,7 +8,7 @@ export default function OrderDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders/${id}`,
+    apiFetch(`/api/orders/${id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -51,10 +52,10 @@ export default function OrderDetail() {
             {pedido.products && pedido.products.length > 0 ? (
               pedido.products.map((item) => (
                 <tr key={item._id}>
-                  <td>{item.productId.nombre}</td>
+                  <td>{item.name}</td>
                   <td style={{ textAlign: "left" }}>{item.quantity}</td>
                   <td style={{ textAlign: "left" }}>
-                    ${item.productId.precio}
+                    ${item.price}
                   </td>
                   <td style={{ textAlign: "left" }}>
                     {new Date(pedido.createdAt).toLocaleDateString()}

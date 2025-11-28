@@ -14,11 +14,19 @@ const OrderSchema = new mongoose.Schema(
           ref: "Producto",
           required: true,
         },
+        name : {
+          type: String,
+          required: true,
+        },
         quantity: {
           type: Number,
           required: true,
           min: 1,
         },
+        price: {
+          type: Number,
+          required: true,
+        }
       },
     ],
     totalAmount: {

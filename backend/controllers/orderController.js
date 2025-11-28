@@ -13,9 +13,7 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getOrderById = async (req, res) => {
   try {
-    const order = await OrderModel.findById(req.params.id).populate(
-      "products.productId"
-    );
+    const order = await OrderModel.findById(req.params.id);
     if (!order) {
       return res.status(404).json({ message: "Orden no encontrada" });
     }
