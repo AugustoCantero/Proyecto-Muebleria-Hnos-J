@@ -7,10 +7,10 @@ export default function OrderCard({ order }) {
       onClick={() => navigate(`/user/pedidos/${order._id}`)}
       className="order-card"
     >
-      <span className="label">Order ID:</span>
+      <span className="label">ID de orden:</span>
       <span className="value">{order._id}</span>
 
-      <span className="label">Date:</span>
+      <span className="label">Fecha de creación:</span>
       <span className="value">
         {new Date(order.createdAt).toLocaleDateString()}
       </span>
