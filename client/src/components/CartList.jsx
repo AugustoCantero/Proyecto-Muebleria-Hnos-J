@@ -43,7 +43,7 @@ export default function CartList() {
         price: producto.precio,
       }));
 
-      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/products", {
+      const response = await fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
