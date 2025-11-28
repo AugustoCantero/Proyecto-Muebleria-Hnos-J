@@ -6,7 +6,8 @@ export default function OrderDetail() {
   const [pedido, setPedido] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {fetch("https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders/${id}",   
+  useEffect(() => {
+    fetch(`https://proyecto-muebleria-hnos-j-1.onrender.com/api/orders/${id}`,   
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
